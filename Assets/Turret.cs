@@ -1,18 +1,25 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 [DisallowMultipleComponent]
 
 public class Turret : MonoBehaviour {
 
+    /// <summary>
+    /// Target currently focused by this turret
+    /// </summary>
     public GameObject currentTarget;
-    [SerializeField] protected List<GameObject> potentialTargets = new List<GameObject>();
 
-    
+    /// <summary>
+    /// List<T> of all currently eligible (inside Trigger sphere) targets
+    /// </summary>
+    [SerializeField] protected List<GameObject> potentialTargets = new List<GameObject>();
+        
     /// <summary>
     /// Range of the turret
     /// </summary>
     public float range = 15f;
+
+    public float pivotSpeed = 10f;
 
     /// <summary>
     /// Collider to detect enemies in range
@@ -31,21 +38,27 @@ public class Turret : MonoBehaviour {
     {
         if (currentTarget == null)
         {
+            IdleRotation();
             return;
         }
 
         // Rotate turret in direction of current target
-        
         LockOnTarget();
-        
+    }
 
+    private void IdleRotation()
+    {
+        // For now, I'm just letting the turret rotate back to a straight forward position to keep it simple
+        // <TODO>: Make turret swivel around slowly when not actively engaging a target
+        Vector3 rotation = Quaternion.Lerp(pivotPart.rotation, Quaternion.Euler(0f, 0f, 0f), Time.deltaTime * pivotSpeed).eulerAngles;
+        pivotPart.rotation = Quaternion.Euler(0f, rotation.y, 0f);
     }
 
     private void LockOnTarget()
     {
         Vector3 dir = currentTarget.transform.position - transform.position;
         Quaternion lookRotation = Quaternion.LookRotation(dir);
-        Vector3 rotation = lookRotation.eulerAngles;
+        Vector3 rotation = Quaternion.Lerp(pivotPart.rotation, lookRotation, Time.deltaTime * pivotSpeed).eulerAngles;
         pivotPart.rotation = Quaternion.Euler(0f, rotation.y, 0f);
     }
 
@@ -58,7 +71,7 @@ public class Turret : MonoBehaviour {
     private void OnTriggerExit(Collider other)
     {
         potentialTargets.Remove(other.gameObject);
-        if (currentTarget == other.transform)
+        if (currentTarget == other.gameObject)
         {
             currentTarget = null;
             if (potentialTargets.Count > 0)
