@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class Turret : MonoBehaviour {
 
-    /// <summary>
-    /// Target currently focused by this turret
-    /// </summary>
-    public GameObject currentTarget;
 
+
+    [Header("Projectiles")]
     /// <summary>
-    /// List<T> of all currently eligible (inside Trigger sphere) targets
+    /// Bullet gameObject
     /// </summary>
-    [SerializeField] protected List<GameObject> potentialTargets = new List<GameObject>();
-        
+    public GameObject bulletPrefab;
+
+
+    [Header("Attributes")]
     /// <summary>
     /// Range of the turret
     /// </summary>
@@ -21,15 +21,31 @@ public class Turret : MonoBehaviour {
 
     public float pivotSpeed = 10f;
 
+    public float fireRate = 1f;
+    private float fireCountdown = 0f;
+    public float fireVelocity = 100f;
+
+
+    [Header("Turret Parts")]
+    [SerializeField] Transform pivotPart;
+    [SerializeField] Transform barrelTip;
     /// <summary>
     /// Collider to detect enemies in range
     /// </summary>
     public SphereCollider rangeTrigger;
 
-    [SerializeField] Transform pivotPart;
+    [Header("Tracking")]
+    /// <summary>
+    /// Target currently focused by this turret
+    /// </summary>
+    public GameObject currentTarget;
+    /// <summary>
+    /// List<T> of all currently eligible (inside Trigger sphere) targets
+    /// </summary>
+    [SerializeField] protected List<GameObject> potentialTargets = new List<GameObject>();
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         rangeTrigger.radius = range;
 	}
 	
@@ -44,6 +60,14 @@ public class Turret : MonoBehaviour {
 
         // Rotate turret in direction of current target
         LockOnTarget();
+
+        if (fireCountdown <= 0f)
+        {
+            Shoot();
+            fireCountdown = 1f / fireRate;
+        }
+
+        fireCountdown -= Time.deltaTime;
     }
 
     private void IdleRotation()
@@ -101,13 +125,34 @@ public class Turret : MonoBehaviour {
         }
     }
 
-    private void OnDrawGizmosSelected()
+    void Shoot()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, range);
-        if (currentTarget != null)
+        GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, barrelTip.position, barrelTip.rotation);
+        Bullet bullet = bulletGO.GetComponent<Bullet>();
+
+        if (bullet != null)
         {
-            Gizmos.DrawWireSphere(currentTarget.transform.position, 2f);
+            Enemy enemyToShoot = currentTarget.GetComponent<Enemy>();
+            bullet.m_Velocity = fireVelocity;
+            bullet.AcquireTarget(enemyToShoot);
+        }
+            
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (GameManager.instance.alwaysDrawGizmos)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, range);
+            if (currentTarget != null)
+            {
+                Gizmos.DrawWireSphere(currentTarget.transform.position, 2f);
+                
+                Gizmos.DrawRay(pivotPart.position, pivotPart.forward);
+                Gizmos.color = Color.green;
+                Gizmos.DrawLine(pivotPart.position, currentTarget.transform.position);
+            }
         }
     }
 }
