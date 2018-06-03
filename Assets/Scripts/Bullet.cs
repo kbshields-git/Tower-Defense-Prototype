@@ -7,7 +7,7 @@ public class Bullet : MonoBehaviour {
     private Enemy target;
 
     public float m_Velocity = 10f;
-    public int m_BaseDamage = 10;
+    public int m_BaseDamage = 1;
 
     public void AcquireTarget(Enemy _target)
     {

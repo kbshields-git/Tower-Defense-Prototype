@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 65364420248633334}
   - component: {fileID: 195759049308782868}
   - component: {fileID: 114739757419425766}
-  - component: {fileID: 54978286623343156}
+  - component: {fileID: 54391470686629484}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: enemyTag
@@ -39,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1909323893381690}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.31, y: 0.5, z: 8}
+  m_LocalPosition: {x: 8.46, y: 0.5, z: 9.24}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -87,7 +87,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1909323893381690}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &54978286623343156
+--- !u!54 &54391470686629484
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -126,6 +126,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 195759049308782868}
+  enemyObject: {fileID: 1909323893381690}
+  _colAlive: {r: 1, g: 0.6454075, b: 0.10849059, a: 0}
+  _colDying: {r: 0.3301887, g: 0.012699564, b: 0, a: 0}
   speed: 3.5
   healthMaximum: 20
   currentHealth: 0

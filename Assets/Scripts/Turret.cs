@@ -24,6 +24,7 @@ public class Turret : MonoBehaviour {
     public float fireRate = 1f;
     private float fireCountdown = 0f;
     public float fireVelocity = 100f;
+    public int baseDamage = 1;
 
 
     [Header("Turret Parts")]
@@ -46,6 +47,7 @@ public class Turret : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        currentTarget = null;
         rangeTrigger.radius = range;
 	}
 	
@@ -55,6 +57,12 @@ public class Turret : MonoBehaviour {
         if (currentTarget == null)
         {
             IdleRotation();
+            currentTarget = null;
+            if (potentialTargets.Count > 0)
+            {
+                FindNextTarget();
+            }
+           
             return;
         }
 
@@ -75,7 +83,7 @@ public class Turret : MonoBehaviour {
         // For now, I'm just letting the turret rotate back to a straight forward position to keep it simple
         // <TODO>: Make turret swivel around slowly when not actively engaging a target
         Vector3 rotation = Quaternion.Lerp(pivotPart.rotation, Quaternion.Euler(0f, 0f, 0f), Time.deltaTime * pivotSpeed).eulerAngles;
-        pivotPart.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+        pivotPart.rotation = Quaternion.Euler(rotation.x, rotation.y, 0f);
     }
 
     private void LockOnTarget()
@@ -83,7 +91,7 @@ public class Turret : MonoBehaviour {
         Vector3 dir = currentTarget.transform.position - transform.position;
         Quaternion lookRotation = Quaternion.LookRotation(dir);
         Vector3 rotation = Quaternion.Lerp(pivotPart.rotation, lookRotation, Time.deltaTime * pivotSpeed).eulerAngles;
-        pivotPart.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+        pivotPart.rotation = Quaternion.Euler(rotation.x, rotation.y, 0f);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -110,6 +118,8 @@ public class Turret : MonoBehaviour {
     {
         float shortestDistance = Mathf.Infinity;
         GameObject nearestTarget = null;
+        // Clean nulls out of the list
+        potentialTargets.RemoveAll(item => item == null);
         foreach (var targ in potentialTargets)
         {
             float distanceToTarget = Vector3.Distance(transform.position, targ.transform.position);
@@ -134,6 +144,7 @@ public class Turret : MonoBehaviour {
         {
             Enemy enemyToShoot = currentTarget.GetComponent<Enemy>();
             bullet.m_Velocity = fireVelocity;
+            bullet.m_BaseDamage = baseDamage;
             bullet.AcquireTarget(enemyToShoot);
         }
             
