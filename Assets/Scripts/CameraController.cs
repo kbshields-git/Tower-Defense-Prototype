@@ -1,14 +1,20 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class CameraController : MonoBehaviour
 {
-
+    [SerializeField] Text debugOut;
     public float panSpeed = 30f;
     public float panBorderThickness = 10f;
 
     public float scrollSpeed = 5f;
-    public float minY = 10f;
+    public float minY = 3f;
     public float maxY = 80f;
+    public float minX = -5f;
+    public float maxX = 5f;
+    public float minZ = -12f;
+    public float maxZ = 4f;
+
 
     // Update is called once per frame
     void Update()
@@ -44,7 +50,9 @@ public class CameraController : MonoBehaviour
 
         pos.y -= scroll * 1000 * scrollSpeed * Time.deltaTime;
         pos.y = Mathf.Clamp(pos.y, minY, maxY);
-
+        pos.x = Mathf.Clamp(pos.x, minX, maxX);
+        pos.z = Mathf.Clamp(pos.z, minZ, maxZ);
+        debugOut.text = transform.position.ToString();
         transform.position = pos;
 
     }
