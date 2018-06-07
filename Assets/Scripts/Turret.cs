@@ -34,6 +34,8 @@ public class Turret : MonoBehaviour {
     /// Collider to detect enemies in range
     /// </summary>
     public SphereCollider rangeTrigger;
+    public AudioSource m_turretAudio;
+    public AudioEvent m_Firing;
 
     [Header("Tracking")]
     /// <summary>
@@ -145,6 +147,7 @@ public class Turret : MonoBehaviour {
             Enemy enemyToShoot = currentTarget.GetComponent<Enemy>();
             bullet.m_Velocity = fireVelocity;
             bullet.m_BaseDamage = baseDamage;
+            m_Firing.Play(m_turretAudio);
             bullet.AcquireTarget(enemyToShoot);
         }
             

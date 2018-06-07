@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb62f04014c8a7e49a2f83185eda292c, type: 3}
+  m_Name: ProjectileTurret
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: d440c9f7407a04474bf738520785306b, type: 3}
+  - {fileID: 8300000, guid: d88fd5368c36748d684ff9e8db416da9, type: 3}
+  - {fileID: 8300000, guid: 5bf7c957d8f4a40ff9977d85be58d48f, type: 3}
+  - {fileID: 8300000, guid: 11e15d42e0a474c719970d3b8ddf4b05, type: 3}
+  - {fileID: 8300000, guid: dc29f7080efef42e4bffce14778bca99, type: 3}
+  - {fileID: 8300000, guid: c44a398ac1bfe4fa79c75b96bebddd6a, type: 3}
+  - {fileID: 8300000, guid: 4442df31c446a4ff4ac434e95e5de866, type: 3}
+  - {fileID: 8300000, guid: 5a6ca7a364e294886845ab3c268ea63e, type: 3}
+  - {fileID: 8300000, guid: eed58edbe19094382b8536c1405fed61, type: 3}
+  - {fileID: 8300000, guid: e893433625bae4c0584daccfde0c2866, type: 3}
+  - {fileID: 8300000, guid: 3b5fc9b92d19541449a6b6ab388a7ffa, type: 3}
+  - {fileID: 8300000, guid: ebde808a5205d444193394a272542f85, type: 3}
+  - {fileID: 8300000, guid: b44217f5373cb4a628587e2194eb15a7, type: 3}
+  - {fileID: 8300000, guid: 9cfc9c4c568e54e68a4038ecdf7ffac7, type: 3}
+  volume:
+    minValue: 0.4351661
+    maxValue: 0.9028238
+  pitch:
+    minValue: 0.82599455
+    maxValue: 1.2347403

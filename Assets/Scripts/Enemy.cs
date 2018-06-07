@@ -3,17 +3,24 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour {
 
-    [SerializeField] NavMeshAgent agent;
+    
     [SerializeField] GameObject enemyObject;
-    public Color _colAlive, _colDying;
-    bool TargetSet = false;
-    GameObject targetExit;
+    
+    
+    
+    [Header("Attributes")]
     public float speed = 3.5f;
     public int healthMaximum = 20;
     public int currentHealth;
+    public Color _colAlive, _colDying;
 
     private Renderer _render;
     private MaterialPropertyBlock _propBlock;
+
+    [Header("Navigation")]
+    [SerializeField] NavMeshAgent agent;
+    GameObject targetExit;
+    bool TargetSet = false;
 
     private void Awake()
     {
