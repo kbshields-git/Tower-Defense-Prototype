@@ -13,6 +13,8 @@ public class Bullet : MonoBehaviour {
     public bool m_IsLit;
     [MinMaxRange(0,2)]
     public RangedFloat m_RandLightFalloffRange;
+    [MinMaxRange(0,40)]
+    public RangedFloat m_RandIntensityRange;
     private float m_RandLightFalloff;
     private float m_RemainingTime;
     public Light m_BulletGlow;
@@ -27,7 +29,7 @@ public class Bullet : MonoBehaviour {
     {
         if (m_IsLit)
         {
-            m_Intensity = m_BulletGlow.intensity;
+            m_Intensity = Random.Range(m_RandIntensityRange.minValue, m_RandIntensityRange.maxValue);
             m_RandLightFalloff = Random.Range(m_RandLightFalloffRange.minValue, m_RandLightFalloffRange.maxValue);
             m_RemainingTime = m_RandLightFalloff;
         }

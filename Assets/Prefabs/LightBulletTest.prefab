@@ -195,8 +195,11 @@ MonoBehaviour:
   m_BaseDamage: 1
   m_IsLit: 1
   m_RandLightFalloffRange:
-    minValue: 0.14576374
-    maxValue: 0.47373217
+    minValue: 0
+    maxValue: 0.16580641
+  m_RandIntensityRange:
+    minValue: 0
+    maxValue: 12.547829
   m_BulletGlow: {fileID: 108263673737284806}
 --- !u!135 &135495436605291446
 SphereCollider:
