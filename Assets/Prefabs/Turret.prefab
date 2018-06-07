@@ -515,9 +515,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77568037234f3104db50c3f54a392c20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 1096641775257714, guid: d9e8bba11cc43f641aa265120fe368d6,
+  bulletPrefab: {fileID: 1773005517781176, guid: ae9eae24b5b079a4cb244c276e625e8e,
     type: 2}
-  range: 4
+  range: 10
   pivotSpeed: 10
   fireRate: 10
   fireVelocity: 25
