@@ -125,13 +125,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35eb3bb1ab476b94195fd976c5621d5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 195759049308782868}
   enemyObject: {fileID: 1909323893381690}
-  _colAlive: {r: 1, g: 0.6454075, b: 0.10849059, a: 0}
-  _colDying: {r: 0.3301887, g: 0.012699564, b: 0, a: 0}
   speed: 3.5
   healthMaximum: 20
   currentHealth: 0
+  _colAlive: {r: 1, g: 0.6454075, b: 0.10849059, a: 0}
+  _colDying: {r: 0.3301887, g: 0.012699564, b: 0, a: 0}
+  agent: {fileID: 195759049308782868}
 --- !u!195 &195759049308782868
 NavMeshAgent:
   m_ObjectHideFlags: 1

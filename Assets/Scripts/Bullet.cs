@@ -18,6 +18,7 @@ public class Bullet : MonoBehaviour {
     private float m_RandLightFalloff;
     private float m_RemainingTime;
     public Light m_BulletGlow;
+    public GameObject m_HitEffect;
 
     /// <summary>
     /// Holds the starting intesnity of a bullets light, if it has one.
@@ -36,7 +37,7 @@ public class Bullet : MonoBehaviour {
     }
 
 	// Update is called once per frame
-	void Update ()
+	void FixedUpdate ()
     {
 
         if (target == null)
@@ -85,6 +86,8 @@ public class Bullet : MonoBehaviour {
     {
         int damageToDo = m_BaseDamage;
         target.TakeDamage(damageToDo);
-        Destroy(gameObject);
+        GameObject bullHit = (GameObject)Instantiate(m_HitEffect, target.transform.position, target.transform.rotation);
+        //Destroy(gameObject);
+        
     }
 }

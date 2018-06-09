@@ -125,6 +125,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40a9cd190b0a4e947a20f394eed203d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Velocity: 10
+  m_BaseDamage: 1
+  m_IsLit: 0
+  m_RandLightFalloffRange:
+    minValue: 0
+    maxValue: 0
+  m_RandIntensityRange:
+    minValue: 0
+    maxValue: 0
+  m_BulletGlow: {fileID: 0}
 --- !u!135 &135596720560805096
 SphereCollider:
   m_ObjectHideFlags: 1

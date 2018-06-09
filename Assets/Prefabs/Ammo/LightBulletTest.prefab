@@ -191,7 +191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40a9cd190b0a4e947a20f394eed203d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Velocity: 10
+  m_Velocity: 50
   m_BaseDamage: 1
   m_IsLit: 1
   m_RandLightFalloffRange:
@@ -201,6 +201,8 @@ MonoBehaviour:
     minValue: 0
     maxValue: 12.547829
   m_BulletGlow: {fileID: 108263673737284806}
+  m_HitEffect: {fileID: 1441563338282954, guid: 0428030d5e1abab4b9b8c31b28644bbd,
+    type: 2}
 --- !u!135 &135495436605291446
 SphereCollider:
   m_ObjectHideFlags: 1
