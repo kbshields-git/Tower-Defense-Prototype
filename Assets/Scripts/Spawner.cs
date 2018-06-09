@@ -2,6 +2,8 @@
 
 public class Spawner : MonoBehaviour {
     public GameObject enemy;
+    public GameObject enemyParent;
+    public GameObject parentPFab;
     public float spawnRate;
     public int spawnCount;
 
@@ -17,11 +19,12 @@ public class Spawner : MonoBehaviour {
 
     void SpawnEnemy()
     {
-        Instantiate(enemy, transform.position, transform.rotation);
+        GameObject enemyGO = (GameObject)Instantiate(enemy, transform.position, transform.rotation);
+        enemyGO.transform.SetParent(transform);
         spawnCount--;
         if (spawnCount <= 0)
         {
-            Destroy(gameObject);
+            CancelInvoke();
         }
     }
 }

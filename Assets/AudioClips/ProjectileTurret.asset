@@ -11,8 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb62f04014c8a7e49a2f83185eda292c, type: 3}
   m_Name: ProjectileTurret
   m_EditorClassIdentifier: 
-  clipIndex: 5
-  playRandom: 0
+  clipIndex: 9
+  playRandom: 1
   clips:
   - {fileID: 8300000, guid: d440c9f7407a04474bf738520785306b, type: 3}
   - {fileID: 8300000, guid: d88fd5368c36748d684ff9e8db416da9, type: 3}
@@ -29,8 +29,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b44217f5373cb4a628587e2194eb15a7, type: 3}
   - {fileID: 8300000, guid: 9cfc9c4c568e54e68a4038ecdf7ffac7, type: 3}
   volume:
-    minValue: 0
-    maxValue: 1.0000001
+    minValue: 0.21400172
+    maxValue: 0.78599817
   pitch:
-    minValue: 0.6863327
-    maxValue: 1.4252522
+    minValue: 0.5395889
+    maxValue: 1.3274229

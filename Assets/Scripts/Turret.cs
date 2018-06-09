@@ -11,6 +11,7 @@ public class Turret : MonoBehaviour {
     /// Bullet gameObject
     /// </summary>
     public GameObject bulletPrefab;
+    public Transform bulletParent;
 
 
     [Header("Attributes")]
@@ -98,8 +99,11 @@ public class Turret : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        potentialTargets.Add(other.gameObject);
-        if (currentTarget == null) { currentTarget = other.gameObject; }
+        if (other.tag == "enemyTag")
+        {
+            potentialTargets.Add(other.gameObject);
+            if (currentTarget == null) { currentTarget = other.gameObject; }
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -141,6 +145,7 @@ public class Turret : MonoBehaviour {
     {
         GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, barrelTip.position, barrelTip.rotation);
         Bullet bullet = bulletGO.GetComponent<Bullet>();
+        bulletGO.transform.SetParent(transform);
 
         if (bullet != null)
         {
@@ -148,7 +153,9 @@ public class Turret : MonoBehaviour {
             bullet.m_Velocity = fireVelocity;
             bullet.m_BaseDamage = baseDamage;
             m_Firing.Play(m_turretAudio);
-            bullet.AcquireTarget(enemyToShoot);
+            //bullet.AcquireTarget(enemyToShoot);
+            
+            bulletGO.GetComponent<Rigidbody>().velocity = fireVelocity * barrelTip.forward;
         }
             
     }

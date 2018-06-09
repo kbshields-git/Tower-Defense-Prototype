@@ -6,6 +6,7 @@ using Random = UnityEngine.Random;
 public class Bullet : MonoBehaviour {
 
     private Enemy target;
+    
 
     public float m_Velocity = 10f;
     public int m_BaseDamage = 1;
@@ -36,25 +37,6 @@ public class Bullet : MonoBehaviour {
         }
     }
 
-	// Update is called once per frame
-	void FixedUpdate ()
-    {
-
-        if (target == null)
-        {
-            // <TODO> Use an object pool to manage bullets for efficiency
-            Destroy(gameObject);
-            return;
-        }
-
-        if (m_IsLit)
-        {
-            RolloffGlow();
-        }
-
-        Fly();
-    }
-
     private void RolloffGlow()
     {       
         m_RemainingTime -= Time.deltaTime;
@@ -63,31 +45,20 @@ public class Bullet : MonoBehaviour {
         
     }
 
-    private void Fly()
-    {
-        Vector3 dir = target.gameObject.transform.position - transform.position;
-        float distanceThisFrame = m_Velocity * Time.deltaTime;
-
-        if (dir.magnitude <= distanceThisFrame)
-        {
-            HitTarget();
-            return;
-        }
-
-        transform.Translate(dir.normalized * distanceThisFrame, Space.World);
-    }
-
-    public void AcquireTarget(Enemy _target)
-    {
-        target = _target;
-    }
-
-    void HitTarget()
+    void HitTarget(GameObject target)
     {
         int damageToDo = m_BaseDamage;
-        target.TakeDamage(damageToDo);
-        GameObject bullHit = (GameObject)Instantiate(m_HitEffect, target.transform.position, target.transform.rotation);
+        target.GetComponent<Enemy>().TakeDamage(damageToDo);
+        GameObject bullHit = (GameObject)Instantiate(m_HitEffect, target.transform.position, target.transform.rotation);        
+        Destroy(gameObject);        
+    }
+
+    private void OnTriggerEnter(Collider col)
+    {
+        if (col.gameObject.tag == "enemyTag")
+        {
+            HitTarget(col.gameObject);
+        }
         //Destroy(gameObject);
-        
     }
 }

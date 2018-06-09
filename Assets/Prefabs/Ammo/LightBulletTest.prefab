@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4656620334640938}
   - component: {fileID: 114981775818175148}
+  - component: {fileID: 135338931604951272}
   m_Layer: 0
   m_Name: LightBulletTest
   m_TagString: Untagged
@@ -37,14 +38,13 @@ GameObject:
   - component: {fileID: 4615522528873032}
   - component: {fileID: 33377141694716324}
   - component: {fileID: 23753060616453750}
-  - component: {fileID: 135495436605291446}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1956439355497314
 GameObject:
   m_ObjectHideFlags: 0
@@ -203,15 +203,15 @@ MonoBehaviour:
   m_BulletGlow: {fileID: 108263673737284806}
   m_HitEffect: {fileID: 1441563338282954, guid: 0428030d5e1abab4b9b8c31b28644bbd,
     type: 2}
---- !u!135 &135495436605291446
+--- !u!135 &135338931604951272
 SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1811597584528562}
+  m_GameObject: {fileID: 1773005517781176}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
+  m_IsTrigger: 1
+  m_Enabled: 0
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.1
   m_Center: {x: 0, y: 0, z: 0}

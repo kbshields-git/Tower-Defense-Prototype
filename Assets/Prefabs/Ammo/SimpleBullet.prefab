@@ -20,6 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4688269715658658}
   - component: {fileID: 114718825518229046}
+  - component: {fileID: 54839640085311410}
+  - component: {fileID: 135276561621698692}
   m_Layer: 0
   m_Name: SimpleBullet
   m_TagString: Untagged
@@ -37,7 +39,6 @@ GameObject:
   - component: {fileID: 4957077397127068}
   - component: {fileID: 33078179162570818}
   - component: {fileID: 23543072768646922}
-  - component: {fileID: 135596720560805096}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -114,6 +115,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1596677453698802}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &54839640085311410
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1096641775257714}
+  serializedVersion: 2
+  m_Mass: 0.1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 1
 --- !u!114 &114718825518229046
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -125,7 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40a9cd190b0a4e947a20f394eed203d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Velocity: 10
+  m_Velocity: 1000
   m_BaseDamage: 1
   m_IsLit: 0
   m_RandLightFalloffRange:
@@ -135,15 +151,17 @@ MonoBehaviour:
     minValue: 0
     maxValue: 0
   m_BulletGlow: {fileID: 0}
---- !u!135 &135596720560805096
+  m_HitEffect: {fileID: 1441563338282954, guid: 0428030d5e1abab4b9b8c31b28644bbd,
+    type: 2}
+--- !u!135 &135276561621698692
 SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1596677453698802}
+  m_GameObject: {fileID: 1096641775257714}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.1
   m_Center: {x: 0, y: 0, z: 0}

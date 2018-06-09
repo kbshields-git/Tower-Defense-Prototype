@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Exit
   - enemyTag
+  - enemyParent
   layers:
   - Default
   - TransparentFX
