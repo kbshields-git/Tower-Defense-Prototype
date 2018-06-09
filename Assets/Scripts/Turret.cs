@@ -107,7 +107,14 @@ public class Turret : MonoBehaviour {
         if (other.tag == "enemyTag")
         {
             potentialTargets.Add(other.gameObject);
-            if (currentTarget == null) { currentTarget = other.gameObject; }
+            //If we don't have a valid target yet, check to see if we have LoS on this target and make it currentTarget
+            if (currentTarget == null)
+            {
+                if (ClearShot(other.gameObject))
+                {
+                    currentTarget = other.gameObject;
+                }
+            }
         }
     }
 
@@ -136,8 +143,11 @@ public class Turret : MonoBehaviour {
             float distanceToTarget = Vector3.Distance(transform.position, targ.transform.position);
             if (distanceToTarget < shortestDistance)
             {
-                shortestDistance = distanceToTarget;
-                nearestTarget = targ;
+                if (ClearShot(targ))
+                {
+                    shortestDistance = distanceToTarget;
+                    nearestTarget = targ;
+                }
             }
         }
         if (nearestTarget != null)
@@ -161,8 +171,7 @@ public class Turret : MonoBehaviour {
             if(hit.transform == targ.transform || hit.transform.tag == "enemyTag")
             {
                 hasClearShot = true;
-            }
-            else { FindNextTarget(); }
+            }            
         }
 
         return hasClearShot;
