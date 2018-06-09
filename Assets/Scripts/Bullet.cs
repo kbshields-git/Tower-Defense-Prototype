@@ -26,21 +26,21 @@ public class Bullet : MonoBehaviour {
     /// </summary>
     private float m_Intensity;
 
- 
-	void Awake()
+
+    void Awake()
     {
         if (m_IsLit)
         {
             m_Intensity = Random.Range(m_RandIntensityRange.minValue, m_RandIntensityRange.maxValue);
             m_RandLightFalloff = Random.Range(m_RandLightFalloffRange.minValue, m_RandLightFalloffRange.maxValue);
             m_RemainingTime = m_RandLightFalloff;
+            InvokeRepeating("RolloffGlow", 0f, m_RemainingTime / 5);
         }
     }
 
     private void RolloffGlow()
     {       
         m_RemainingTime -= Time.deltaTime;
-        Debug.Log(m_RemainingTime / m_RandLightFalloff);
         m_BulletGlow.intensity = m_Intensity * (m_RemainingTime / m_RandLightFalloff);
         
     }
