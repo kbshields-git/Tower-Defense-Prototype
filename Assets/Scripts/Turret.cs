@@ -43,6 +43,8 @@ public class Turret : MonoBehaviour {
     /// Target currently focused by this turret
     /// </summary>
     public GameObject currentTarget;
+    public Transform sightedTarget;
+    public bool hasClearShot = false;
     /// <summary>
     /// List<T> of all currently eligible (inside Trigger sphere) targets
     /// </summary>
@@ -74,8 +76,11 @@ public class Turret : MonoBehaviour {
 
         if (fireCountdown <= 0f)
         {
-            Shoot();
-            fireCountdown = 1f / fireRate;
+            if (ClearShot(currentTarget))
+            {
+                Shoot();
+                fireCountdown = 1f / fireRate;
+            }
         }
 
         fireCountdown -= Time.deltaTime;
@@ -141,6 +146,27 @@ public class Turret : MonoBehaviour {
         }
     }
 
+    bool ClearShot(GameObject targ)
+    {
+        hasClearShot = false;
+        float aimHeightOffset = 0.5f;
+        RaycastHit hit;
+        Vector3 dir = targ.transform.position - transform.position;
+        dir.y -= aimHeightOffset;
+        Ray ray = new Ray(barrelTip.position, dir);
+        Debug.DrawRay(ray.origin, ray.direction * 5000, Color.yellow);
+        if(Physics.Raycast(ray, out hit, range))
+        {
+            sightedTarget = hit.transform;
+            if(hit.transform == targ.transform || hit.transform.tag == "enemyTag")
+            {
+                hasClearShot = true;
+            }
+            else { FindNextTarget(); }
+        }
+
+        return hasClearShot;
+    }
     void Shoot()
     {
         GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, barrelTip.position, barrelTip.rotation);

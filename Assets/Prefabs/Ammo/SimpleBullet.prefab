@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 114718825518229046}
   - component: {fileID: 54839640085311410}
   - component: {fileID: 135276561621698692}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: SimpleBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 4957077397127068}
   - component: {fileID: 33078179162570818}
   - component: {fileID: 23543072768646922}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -153,6 +153,7 @@ MonoBehaviour:
   m_BulletGlow: {fileID: 0}
   m_HitEffect: {fileID: 1441563338282954, guid: 0428030d5e1abab4b9b8c31b28644bbd,
     type: 2}
+  reapTime: 10
 --- !u!135 &135276561621698692
 SphereCollider:
   m_ObjectHideFlags: 1

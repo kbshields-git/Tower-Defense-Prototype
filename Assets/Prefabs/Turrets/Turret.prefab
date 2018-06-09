@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4634206915392822}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 33199426401141510}
   - component: {fileID: 23108884476384062}
   - component: {fileID: 136357236701620922}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 114673433332800476}
   - component: {fileID: 135253008519594942}
   - component: {fileID: 82401221908784250}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 33453704224450442}
   - component: {fileID: 23614826165568916}
   - component: {fileID: 135222106089815588}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4333423896436012}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: BarrelTip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 33215078006685354}
   - component: {fileID: 23128545556223646}
   - component: {fileID: 136984276913120480}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 23071241125425040}
   - component: {fileID: 65348928396927192}
   - component: {fileID: 208756668894634150}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -519,17 +519,18 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1773005517781176, guid: ae9eae24b5b079a4cb244c276e625e8e,
     type: 2}
   bulletParent: {fileID: 0}
-  range: 10
+  range: 30
   pivotSpeed: 10
   fireRate: 15
   fireVelocity: 50
-  baseDamage: 4
+  baseDamage: 10
   pivotPart: {fileID: 4634206915392822}
   barrelTip: {fileID: 4333423896436012}
   rangeTrigger: {fileID: 135253008519594942}
   m_turretAudio: {fileID: 82401221908784250}
   m_Firing: {fileID: 11400000, guid: 75a59135128649d4f9bfd148d2728235, type: 2}
   currentTarget: {fileID: 0}
+  sightedTarget: {fileID: 0}
   potentialTargets: []
 --- !u!135 &135222106089815588
 SphereCollider:

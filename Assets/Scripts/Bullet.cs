@@ -22,6 +22,11 @@ public class Bullet : MonoBehaviour {
     public GameObject m_HitEffect;
 
     /// <summary>
+    /// Time to wait before destroying the bullet, in the case that it misses a legitimate target and rolls off into the level
+    /// </summary>
+    [SerializeField] float reapTime = 10f;
+
+    /// <summary>
     /// Holds the starting intesnity of a bullets light, if it has one.
     /// </summary>
     private float m_Intensity;
@@ -36,6 +41,7 @@ public class Bullet : MonoBehaviour {
             m_RemainingTime = m_RandLightFalloff;
             InvokeRepeating("RolloffGlow", 0f, m_RemainingTime / 5);
         }
+        Invoke("Reap", reapTime);
     }
 
     private void RolloffGlow()
@@ -59,6 +65,14 @@ public class Bullet : MonoBehaviour {
         {
             HitTarget(col.gameObject);
         }
-        //Destroy(gameObject);
+        if (col.gameObject.tag == "Barrier")
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void Reap()
+    {
+        Destroy(gameObject);
     }
 }
