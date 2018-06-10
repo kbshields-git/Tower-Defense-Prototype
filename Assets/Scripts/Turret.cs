@@ -44,11 +44,22 @@ public class Turret : MonoBehaviour {
     /// </summary>
     public GameObject currentTarget;
     public Transform sightedTarget;
+
+    /// <summary>
+    /// Boolean to avoid turrets firing while being placed into the world.
+    /// </summary>
+    bool hasBeenPlaced = false;
+
+    /// <summary>
+    /// Boolean set when a clear shot has been determined.
+    /// </summary>
     public bool hasClearShot = false;
+
     /// <summary>
     /// List<T> of all currently eligible (inside Trigger sphere) targets
     /// </summary>
     [SerializeField] protected List<GameObject> potentialTargets = new List<GameObject>();
+    [SerializeField] protected List<GameObject> sortList = new List<GameObject>();
 
     // Use this for initialization
     void Start () {
@@ -59,6 +70,8 @@ public class Turret : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
+        // Bail if the turret has not yet been built.
+        if (!hasBeenPlaced) { return; }
         if (currentTarget == null)
         {
             IdleRotation();
@@ -84,6 +97,11 @@ public class Turret : MonoBehaviour {
         }
 
         fireCountdown -= Time.deltaTime;
+    }
+
+    public void Build()
+    {
+        hasBeenPlaced = true;
     }
 
     private void IdleRotation()
@@ -148,12 +166,29 @@ public class Turret : MonoBehaviour {
                     shortestDistance = distanceToTarget;
                     nearestTarget = targ;
                 }
+                else
+                {
+                    // Stash target in a list that will later be added to back of the list
+                    sortList.Add(targ);
+                }
             }
+            else { sortList.Add(targ); }
         }
         if (nearestTarget != null)
         {
             currentTarget = nearestTarget;
+            AddSortListBack();
         }
+    }
+
+    void AddSortListBack()
+    {
+        foreach(var targ in sortList)
+        {
+            potentialTargets.Remove(targ);
+        }
+        potentialTargets.AddRange(sortList);
+        sortList.Clear();
     }
 
     bool ClearShot(GameObject targ)
