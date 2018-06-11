@@ -55,7 +55,8 @@ public class Bullet : MonoBehaviour {
     {
         int damageToDo = m_BaseDamage;
         target.GetComponent<Enemy>().TakeDamage(damageToDo);
-        GameObject bullHit = (GameObject)Instantiate(m_HitEffect, target.transform.position, target.transform.rotation);        
+        GameObject bullHit = (GameObject)Instantiate(m_HitEffect, target.transform.position, target.transform.rotation);
+        bullHit.transform.SetParent(gameObject.transform.parent);
         Destroy(gameObject);        
     }
 

@@ -19,6 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4375240112862006}
+  - component: {fileID: 114365964251863776}
   m_Layer: 0
   m_Name: BuildManager
   m_TagString: Untagged
@@ -39,3 +40,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114365964251863776
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1692191363225150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a4856d4b0e1ad046afc9d863d72fb90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turretSlot1: {fileID: 1376639853518576, guid: 273124b60386c91419710322f8f6384d,
+    type: 2}
+  turret1HK: 49
+  turretSlot2: {fileID: 0}
+  turret2HK: 50
+  turretSlot3: {fileID: 0}
+  turret3HK: 51
+  turretSlot4: {fileID: 0}
+  turret4HK: 52
+  rotateHK: 114

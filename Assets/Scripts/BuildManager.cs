@@ -27,10 +27,7 @@ public class BuildManager : MonoBehaviour {
         else if (instance != this)
         {
             Destroy(gameObject);
-        }
-
-        DontDestroyOnLoad(gameObject);
-               
+        }               
     }
     private void Update()
     {

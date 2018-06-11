@@ -561,32 +561,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 42173b06937504748859450e2226c8d7, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &503296850 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1692191363225150, guid: d7711937a086c13478b3477a2ae9d32c,
-    type: 2}
-  m_PrefabInternal: {fileID: 519006243}
---- !u!114 &503296851
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 503296850}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a4856d4b0e1ad046afc9d863d72fb90, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turretSlot1: {fileID: 1376639853518576, guid: 273124b60386c91419710322f8f6384d,
-    type: 2}
-  turret1HK: 49
-  turretSlot2: {fileID: 0}
-  turret2HK: 50
-  turretSlot3: {fileID: 0}
-  turret3HK: 51
-  turretSlot4: {fileID: 0}
-  turret4HK: 52
-  rotateHK: 114
 --- !u!1001 &519006243
 Prefab:
   m_ObjectHideFlags: 0

@@ -51,4 +51,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edf0b2a4ada3a543867ebe954a8aefa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buildManagerPF: {fileID: 1692191363225150, guid: d7711937a086c13478b3477a2ae9d32c,
+    type: 2}
   alwaysDrawGizmos: 1

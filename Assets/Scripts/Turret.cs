@@ -94,6 +94,7 @@ public class Turret : MonoBehaviour {
                 Shoot();
                 fireCountdown = 1f / fireRate;
             }
+            else { currentTarget = null; }
         }
 
         fireCountdown -= Time.deltaTime;
@@ -166,18 +167,12 @@ public class Turret : MonoBehaviour {
                     shortestDistance = distanceToTarget;
                     nearestTarget = targ;
                 }
-                else
-                {
-                    // Stash target in a list that will later be added to back of the list
-                    sortList.Add(targ);
-                }
             }
-            else { sortList.Add(targ); }
+
         }
         if (nearestTarget != null)
         {
             currentTarget = nearestTarget;
-            AddSortListBack();
         }
     }
 
