@@ -64,6 +64,8 @@ public class Turret : MonoBehaviour {
     // Use this for initialization
     void Start () {
         currentTarget = null;
+        hasBeenPlaced = false;
+        gameObject.layer = 2;
         rangeTrigger.radius = range;
 	}
 	
@@ -103,6 +105,7 @@ public class Turret : MonoBehaviour {
     public void Build()
     {
         hasBeenPlaced = true;
+        gameObject.layer = 0;
     }
 
     private void IdleRotation()

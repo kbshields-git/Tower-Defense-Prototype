@@ -129,8 +129,8 @@ MonoBehaviour:
   speed: 3.5
   healthMaximum: 20
   currentHealth: 0
-  _colAlive: {r: 1, g: 0.6454075, b: 0.10849059, a: 0}
-  _colDying: {r: 0.3301887, g: 0.012699564, b: 0, a: 0}
+  _colAlive: {r: 0.003921569, g: 0.17254902, b: 0.20392157, a: 1}
+  _colDying: {r: 0.41568628, g: 0.58431375, b: 0.6156863, a: 1}
   agent: {fileID: 195759049308782868}
 --- !u!195 &195759049308782868
 NavMeshAgent:

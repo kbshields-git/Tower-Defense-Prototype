@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4634206915392822}
-  m_Layer: 2
+  m_Layer: 10
   m_Name: Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 33199426401141510}
   - component: {fileID: 23108884476384062}
   - component: {fileID: 136357236701620922}
-  m_Layer: 2
+  m_Layer: 10
   m_Name: Barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,8 +55,8 @@ GameObject:
   - component: {fileID: 114673433332800476}
   - component: {fileID: 135253008519594942}
   - component: {fileID: 82401221908784250}
-  m_Layer: 2
-  m_Name: Turret
+  m_Layer: 10
+  m_Name: MGunTurret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 33453704224450442}
   - component: {fileID: 23614826165568916}
   - component: {fileID: 135222106089815588}
-  m_Layer: 2
+  m_Layer: 10
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4333423896436012}
-  m_Layer: 2
+  m_Layer: 10
   m_Name: BarrelTip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 33215078006685354}
   - component: {fileID: 23128545556223646}
   - component: {fileID: 136984276913120480}
-  m_Layer: 2
+  m_Layer: 10
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 23071241125425040}
   - component: {fileID: 65348928396927192}
   - component: {fileID: 208756668894634150}
-  m_Layer: 2
+  m_Layer: 10
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -244,7 +244,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 0aa37a3c39f6e664ca5aeb2809f799b1, type: 2}
+  - {fileID: 2100000, guid: 1e26cc669abee344dab6fa8ea28f3098, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -531,9 +531,9 @@ MonoBehaviour:
   m_Firing: {fileID: 11400000, guid: 75a59135128649d4f9bfd148d2728235, type: 2}
   currentTarget: {fileID: 0}
   sightedTarget: {fileID: 0}
-  hasBeenPlaced: 0
   hasClearShot: 0
   potentialTargets: []
+  sortList: []
 --- !u!135 &135222106089815588
 SphereCollider:
   m_ObjectHideFlags: 1
