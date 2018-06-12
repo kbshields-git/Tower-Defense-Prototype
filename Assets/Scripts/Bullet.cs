@@ -4,7 +4,8 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class Bullet : MonoBehaviour {
-
+    public bool useTags = true;
+    public bool bulletParticle = false;
     private Enemy target;
     
 
@@ -55,20 +56,30 @@ public class Bullet : MonoBehaviour {
     {
         int damageToDo = m_BaseDamage;
         target.GetComponent<Enemy>().TakeDamage(damageToDo);
-        GameObject bullHit = (GameObject)Instantiate(m_HitEffect, target.transform.position, target.transform.rotation);
-        bullHit.transform.SetParent(gameObject.transform.parent);
+        if (bulletParticle)
+        {
+            GameObject bullHit = (GameObject)Instantiate(m_HitEffect, target.transform.position, target.transform.rotation);
+            bullHit.transform.SetParent(gameObject.transform.parent);
+        }
         Destroy(gameObject);        
     }
 
     private void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == "enemyTag")
+        if (useTags)
+        {
+            if (col.gameObject.tag == "enemyTag")
+            {
+                HitTarget(col.gameObject);
+            }
+            if (col.gameObject.tag == "Barrier")
+            {
+                Destroy(gameObject);
+            }
+        }
+        else
         {
             HitTarget(col.gameObject);
-        }
-        if (col.gameObject.tag == "Barrier")
-        {
-            Destroy(gameObject);
         }
     }
 

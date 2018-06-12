@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 114981775818175148}
   - component: {fileID: 135338931604951272}
   - component: {fileID: 54692660404516402}
-  m_Layer: 2
+  m_Layer: 11
   m_Name: LightBulletTest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 4615522528873032}
   - component: {fileID: 33377141694716324}
   - component: {fileID: 23753060616453750}
-  m_Layer: 2
+  m_Layer: 11
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4699679372339112}
   - component: {fileID: 108263673737284806}
-  m_Layer: 2
+  m_Layer: 11
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -157,9 +157,9 @@ Rigidbody:
   m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!108 &108263673737284806
 Light:
   m_ObjectHideFlags: 1
@@ -207,9 +207,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40a9cd190b0a4e947a20f394eed203d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useTags: 0
+  bulletParticle: 0
   m_Velocity: 50
   m_BaseDamage: 1
-  m_IsLit: 1
+  m_IsLit: 0
   m_RandLightFalloffRange:
     minValue: 0.09782941
     maxValue: 0.7160968

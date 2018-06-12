@@ -13,6 +13,11 @@ public class Turret : MonoBehaviour {
     public GameObject bulletPrefab;
     public Transform bulletParent;
 
+    /// <summary>
+    /// Object pool of bullets, to avoid overhead of creation/destruction at runtime
+    /// </summary>
+    private Bullet[] bulletClip;
+    //private List<>
 
     [Header("Attributes")]
     /// <summary>
@@ -65,7 +70,7 @@ public class Turret : MonoBehaviour {
     void Start () {
         currentTarget = null;
         hasBeenPlaced = false;
-        gameObject.layer = 2;
+        gameObject.layer = 2; // Move to ignore raycast layer until Turret is placed.
         rangeTrigger.radius = range;
 	}
 	
@@ -139,7 +144,7 @@ public class Turret : MonoBehaviour {
             }
         }
     }
-
+    /*
     private void OnTriggerExit(Collider other)
     {
         potentialTargets.Remove(other.gameObject);
@@ -153,6 +158,7 @@ public class Turret : MonoBehaviour {
         }
 
     }
+    */
 
     void FindNextTarget()
     {
