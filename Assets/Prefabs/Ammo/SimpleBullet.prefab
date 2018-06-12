@@ -19,9 +19,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4688269715658658}
-  - component: {fileID: 114718825518229046}
   - component: {fileID: 54839640085311410}
   - component: {fileID: 135276561621698692}
+  - component: {fileID: 114376527263975156}
   m_Layer: 11
   m_Name: SimpleBullet
   m_TagString: Untagged
@@ -130,7 +130,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!114 &114718825518229046
+--- !u!114 &114376527263975156
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -138,12 +138,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1096641775257714}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40a9cd190b0a4e947a20f394eed203d8, type: 3}
+  m_Script: {fileID: 11500000, guid: 094934d277cf2ba43b9be9f9b5f4974b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   useTags: 0
   bulletParticle: 0
-  m_Velocity: 1000
+  m_Velocity: 10
   m_BaseDamage: 1
   m_IsLit: 0
   m_RandLightFalloffRange:
@@ -153,9 +153,8 @@ MonoBehaviour:
     minValue: 0
     maxValue: 0
   m_BulletGlow: {fileID: 0}
-  m_HitEffect: {fileID: 1441563338282954, guid: 0428030d5e1abab4b9b8c31b28644bbd,
-    type: 2}
-  reapTime: 10
+  m_HitEffect: {fileID: 0}
+  reapTime: 2
 --- !u!135 &135276561621698692
 SphereCollider:
   m_ObjectHideFlags: 1

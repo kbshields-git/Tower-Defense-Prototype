@@ -10,13 +10,14 @@ public class Turret : MonoBehaviour {
     /// <summary>
     /// Bullet gameObject
     /// </summary>
-    public GameObject bulletPrefab;
-    public Transform bulletParent;
+    //public GameObject bulletPrefab;
+    //public Transform bulletParent;
+    public PoolBullet bulletPrefab;
 
     /// <summary>
     /// Object pool of bullets, to avoid overhead of creation/destruction at runtime
     /// </summary>
-    private Bullet[] bulletClip;
+    //private PoolBullet bulletClip;
     //private List<>
 
     [Header("Attributes")]
@@ -131,7 +132,7 @@ public class Turret : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "enemyTag")
+        if (other.tag == "enemyTag") //<TODO> Layer check instead of TAG
         {
             potentialTargets.Add(other.gameObject);
             //If we don't have a valid target yet, check to see if we have LoS on this target and make it currentTarget
@@ -220,19 +221,23 @@ public class Turret : MonoBehaviour {
     }
     void Shoot()
     {
-        GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, barrelTip.position, barrelTip.rotation);
-        Bullet bullet = bulletGO.GetComponent<Bullet>();
-        bulletGO.transform.SetParent(transform);
-
+        //GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, barrelTip.position, barrelTip.rotation);
+        //Bullet bullet = bulletGO.GetComponent<Bullet>();
+        //bulletGO.transform.SetParent(transform);
+        PoolBullet bullet = bulletPrefab.GetPooledInstance<PoolBullet>();
+        
         if (bullet != null)
         {
-            Enemy enemyToShoot = currentTarget.GetComponent<Enemy>();
+            //Enemy enemyToShoot = currentTarget.GetComponent<Enemy>();
+
             bullet.m_Velocity = fireVelocity;
             bullet.m_BaseDamage = baseDamage;
             m_Firing.Play(m_turretAudio);
             //bullet.AcquireTarget(enemyToShoot);
-            
-            bulletGO.GetComponent<Rigidbody>().velocity = fireVelocity * barrelTip.forward;
+            bullet.transform.position = barrelTip.transform.position;
+            bullet.transform.rotation = barrelTip.transform.rotation;
+            bullet.FireBullet();
+            bullet.GetComponent<Rigidbody>().velocity = fireVelocity * barrelTip.forward;
         }
             
     }

@@ -19,9 +19,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4656620334640938}
-  - component: {fileID: 114981775818175148}
   - component: {fileID: 135338931604951272}
   - component: {fileID: 54692660404516402}
+  - component: {fileID: 114881080620659596}
   m_Layer: 11
   m_Name: LightBulletTest
   m_TagString: Untagged
@@ -196,7 +196,7 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &114981775818175148
+--- !u!114 &114881080620659596
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -204,24 +204,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 1773005517781176}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40a9cd190b0a4e947a20f394eed203d8, type: 3}
+  m_Script: {fileID: 11500000, guid: 094934d277cf2ba43b9be9f9b5f4974b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   useTags: 0
   bulletParticle: 0
-  m_Velocity: 50
+  m_Velocity: 10
   m_BaseDamage: 1
   m_IsLit: 0
   m_RandLightFalloffRange:
-    minValue: 0.09782941
-    maxValue: 0.7160968
+    minValue: 0
+    maxValue: 0
   m_RandIntensityRange:
     minValue: 0
-    maxValue: 4.78141
-  m_BulletGlow: {fileID: 108263673737284806}
-  m_HitEffect: {fileID: 1441563338282954, guid: 0428030d5e1abab4b9b8c31b28644bbd,
-    type: 2}
-  reapTime: 3
+    maxValue: 0
+  m_BulletGlow: {fileID: 0}
+  m_HitEffect: {fileID: 0}
+  reapTime: 10
 --- !u!135 &135338931604951272
 SphereCollider:
   m_ObjectHideFlags: 1
