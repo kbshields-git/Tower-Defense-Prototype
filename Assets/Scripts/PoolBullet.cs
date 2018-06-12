@@ -26,6 +26,7 @@ public class PoolBullet : PooledObject {
     /// Time to wait before destroying the bullet, in the case that it misses a legitimate target and rolls off into the level
     /// </summary>
     [SerializeField] float reapTime = 10f;
+    float remainingTime;
 
     /// <summary>
     /// Holds the starting intesnity of a bullets light, if it has one.
@@ -42,9 +43,15 @@ public class PoolBullet : PooledObject {
             m_RemainingTime = m_RandLightFalloff;
             InvokeRepeating("RolloffGlow", 0f, m_RemainingTime / 5);
         }
-        Invoke("Reap", reapTime);
+        remainingTime = reapTime;
+        //Invoke("Reap", reapTime);
     }
 
+    private void Update()
+    {
+        remainingTime -= Time.deltaTime;
+        if (remainingTime <= 0) { ReturnToPool(); }
+    }
     private void RolloffGlow()
     {       
         m_RemainingTime -= Time.deltaTime;
