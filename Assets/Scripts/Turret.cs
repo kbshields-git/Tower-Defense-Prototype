@@ -105,7 +105,7 @@ public class Turret : MonoBehaviour {
     public void Build()
     {
         hasBeenPlaced = true;
-        gameObject.layer = 0;
+        gameObject.layer = 10;
     }
 
     private void IdleRotation()
@@ -197,7 +197,10 @@ public class Turret : MonoBehaviour {
         Vector3 dir = targ.transform.position - transform.position;
         dir.y -= aimHeightOffset;
         Ray ray = new Ray(barrelTip.position, dir);
-        Debug.DrawRay(ray.origin, ray.direction * 5000, Color.yellow);
+        if (GameManager.instance.alwaysDrawGizmos & GameManager.instance.drawTurretGizmos)
+        {
+            Debug.DrawRay(ray.origin, ray.direction * 5000, Color.yellow);
+        }
         if(Physics.Raycast(ray, out hit, range))
         {
             sightedTarget = hit.transform;
@@ -230,7 +233,7 @@ public class Turret : MonoBehaviour {
 
     private void OnDrawGizmos()
     {
-        if (GameManager.instance.alwaysDrawGizmos)
+        if (GameManager.instance.alwaysDrawGizmos & GameManager.instance.drawTurretGizmos)
         {
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, range);

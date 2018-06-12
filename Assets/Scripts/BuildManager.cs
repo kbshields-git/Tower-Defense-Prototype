@@ -2,6 +2,7 @@
 
 public class BuildManager : MonoBehaviour {
     public static BuildManager instance;
+    [SerializeField] BuildGrid bGrid;
     //Starting with 4 possible turrets. This will become much more fleshed out and UI driven eventually.
     [SerializeField] GameObject turretSlot1;
     [SerializeField] KeyCode turret1HK = KeyCode.Alpha1;
@@ -27,7 +28,9 @@ public class BuildManager : MonoBehaviour {
         else if (instance != this)
         {
             Destroy(gameObject);
-        }               
+        }
+        bGrid = FindObjectOfType<BuildGrid>();
+        
     }
     private void Update()
     {
@@ -61,11 +64,23 @@ public class BuildManager : MonoBehaviour {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         RaycastHit hitInfo;
-        if (Physics.Raycast(ray, out hitInfo))
+        // Filter this ray to only look at the "Buildable" layer(9)
+        int layerMask = 1 << 9;
+        if (Physics.Raycast(ray, out hitInfo, 100f, layerMask))
         {
-            selectedBuild.transform.position = hitInfo.point;
-            //selectedBuild.transform.rotation = Quaternion.FromToRotation(Vector3.up, hitInfo.normal);
+            layerMask = 1 << 10; //Lets check if we're hitting a turret now.
+            if (!Physics.Raycast(ray, out hitInfo, 100f, layerMask))
+            {
+                selectedBuild.transform.position = bGrid.GetNearestPointOnGrid(hitInfo.point);
+                //selectedBuild.transform.position = hitInfo.point;
+            }
         }
+        if (GameManager.instance.alwaysDrawGizmos & GameManager.instance.drawBuildGizmos)
+        {
+            Debug.DrawRay(ray.origin, ray.direction * 500f, Color.magenta);
+        }
+        //selectedBuild.transform.rotation = Quaternion.FromToRotation(Vector3.up, hitInfo.normal);
+
     }
 
     private void Rotate()

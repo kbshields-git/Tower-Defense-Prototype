@@ -7,6 +7,10 @@ public class GameManager : MonoBehaviour {
     public GameObject buildManagerPF;
     GameObject buildManager;
     public bool alwaysDrawGizmos = true;
+    public bool drawBuildGizmos = true;
+    public bool drawGridGizmos = true;
+    public bool drawTurretGizmos = true;
+
 	// Use this for initialization
 	void Awake () {
 		if (instance == null)

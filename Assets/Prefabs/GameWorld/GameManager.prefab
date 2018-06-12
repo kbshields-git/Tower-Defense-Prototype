@@ -54,3 +54,6 @@ MonoBehaviour:
   buildManagerPF: {fileID: 1692191363225150, guid: d7711937a086c13478b3477a2ae9d32c,
     type: 2}
   alwaysDrawGizmos: 1
+  drawBuildGizmos: 1
+  drawGridGizmos: 1
+  drawTurretGizmos: 1
