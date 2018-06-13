@@ -163,10 +163,11 @@ public class Turret : MonoBehaviour {
 
     void FindNextTarget()
     {
-        float shortestDistance = Mathf.Infinity;
+        float shortestDistance = range;
         GameObject nearestTarget = null;
         // Clean nulls out of the list
-        potentialTargets.RemoveAll(item => item == null);
+        //potentialTargets.RemoveAll(item => item == null);
+        potentialTargets.RemoveAll(item => item.activeInHierarchy == false);        
         foreach (var targ in potentialTargets)
         {
             float distanceToTarget = Vector3.Distance(transform.position, targ.transform.position);
@@ -184,6 +185,7 @@ public class Turret : MonoBehaviour {
         {
             currentTarget = nearestTarget;
         }
+        else { potentialTargets.Clear(); }
     }
 
     void AddSortListBack()

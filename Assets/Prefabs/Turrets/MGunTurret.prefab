@@ -55,6 +55,7 @@ GameObject:
   - component: {fileID: 114673433332800476}
   - component: {fileID: 135253008519594942}
   - component: {fileID: 82401221908784250}
+  - component: {fileID: 208312627415318438}
   m_Layer: 10
   m_Name: MGunTurret
   m_TagString: Untagged
@@ -494,8 +495,8 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
-      value: 1
+      time: 0.14642906
+      value: 0.9999962
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -518,7 +519,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 114376527263975156, guid: d9e8bba11cc43f641aa265120fe368d6,
     type: 2}
-  range: 30
+  range: 5
   pivotSpeed: 10
   fireRate: 15
   fireVelocity: 50
@@ -583,6 +584,21 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!208 &208312627415318438
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1376639853518576}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!208 &208756668894634150
 NavMeshObstacle:
   m_ObjectHideFlags: 1

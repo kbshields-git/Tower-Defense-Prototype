@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
 
-public class Enemy : MonoBehaviour {
+public class Enemy : PooledObject {
 
     
     [SerializeField] GameObject enemyObject;
@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour {
     public float speed = 3.5f;
     public int healthMaximum = 20;
     public int currentHealth;
+    public bool isAlive = false;
     public Color _colAlive, _colDying;
 
     private Renderer _render;
@@ -20,24 +21,15 @@ public class Enemy : MonoBehaviour {
     [Header("Navigation")]
     [SerializeField] NavMeshAgent agent;
     GameObject targetExit;
-    bool TargetSet = false;
+    bool targetSet = false;
 
-    private void Awake()
-    {
-        currentHealth = healthMaximum;
-        _propBlock = new MaterialPropertyBlock();
-        _render = enemyObject.GetComponent<Renderer>();
-        // Search the scene for the object labeled Exit
-        targetExit = GameObject.FindGameObjectWithTag("Exit");
-              
-    }
     // Update is called once per frame
     void Update () {
-        if (!TargetSet) {
+        if (!targetSet) {
             agent.SetDestination(targetExit.gameObject.transform.position);
             if (agent.hasPath)
             {
-                TargetSet = true;
+                targetSet = true;
             }            
         }
         _render.GetPropertyBlock(_propBlock);
@@ -52,6 +44,17 @@ public class Enemy : MonoBehaviour {
         }
 	}
 
+    public void SpawnAlive()
+    {
+        currentHealth = healthMaximum;
+        _propBlock = new MaterialPropertyBlock();
+        _render = enemyObject.GetComponent<Renderer>();
+        targetSet = false;
+        isAlive = true;
+        // Search the scene for the object labeled Exit
+        targetExit = GameObject.FindGameObjectWithTag("Exit");
+    }
+
     public void TakeDamage(int damage)
     {
         if (currentHealth > damage)
@@ -63,7 +66,7 @@ public class Enemy : MonoBehaviour {
 
     void Death()
     {
-        // <TODO> Object Pool
-        Destroy(gameObject);
+        isAlive = false;
+        ReturnToPool();
     }
 }

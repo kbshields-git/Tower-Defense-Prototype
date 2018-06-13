@@ -51,8 +51,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a62b7b55dbb6fd745a0efde877c4d820, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 1909323893381690, guid: db84ef5f00c757d4984b21a97b02f1bd, type: 2}
-  enemyParent: {fileID: 0}
-  parentPFab: {fileID: 1967788193732658, guid: 081f850980d87444c8d121c9785b81b9, type: 2}
+  enemyPfab: {fileID: 114739757419425766, guid: db84ef5f00c757d4984b21a97b02f1bd,
+    type: 2}
   spawnRate: 0.1
   spawnCount: 350000000
+  burstCount: 100
+  coolDown: 15
