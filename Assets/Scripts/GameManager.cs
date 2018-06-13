@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour {
     public bool drawBuildGizmos = true;
     public bool drawGridGizmos = true;
     public bool drawTurretGizmos = true;
+    public bool drawEnemyGizmos = true;
+    public bool drawSpawnGizmos = true;
 
 	// Use this for initialization
 	void Awake () {

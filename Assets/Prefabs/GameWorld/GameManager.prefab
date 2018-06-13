@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4392399506490006}
   - component: {fileID: 114546265571299418}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53,7 +53,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildManagerPF: {fileID: 1692191363225150, guid: d7711937a086c13478b3477a2ae9d32c,
     type: 2}
-  alwaysDrawGizmos: 0
-  drawBuildGizmos: 1
-  drawGridGizmos: 1
-  drawTurretGizmos: 1
+  alwaysDrawGizmos: 1
+  drawBuildGizmos: 0
+  drawGridGizmos: 0
+  drawTurretGizmos: 0
+  drawEnemyGizmos: 1
+  drawSpawnGizmos: 1

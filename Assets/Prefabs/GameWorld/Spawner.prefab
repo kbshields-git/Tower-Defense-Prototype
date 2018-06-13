@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4042292738513384}
   - component: {fileID: 114886716669837404}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,5 +55,5 @@ MonoBehaviour:
     type: 2}
   spawnRate: 0.1
   spawnCount: 350000000
-  burstCount: 100
-  coolDown: 15
+  burstCount: 10
+  coolDown: 5

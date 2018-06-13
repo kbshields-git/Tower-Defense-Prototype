@@ -166,6 +166,10 @@ Prefab:
       propertyPath: spawnRate
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 1021999553489152, guid: fe4d4f282488e664fb78e79f2af83b93, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fe4d4f282488e664fb78e79f2af83b93, type: 2}
   m_IsPrefabParent: 0
@@ -566,6 +570,10 @@ Prefab:
       propertyPath: spawnRate
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 1021999553489152, guid: fe4d4f282488e664fb78e79f2af83b93, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fe4d4f282488e664fb78e79f2af83b93, type: 2}
   m_IsPrefabParent: 0
@@ -607,6 +615,10 @@ Prefab:
     - target: {fileID: 4375240112862006, guid: d7711937a086c13478b3477a2ae9d32c, type: 2}
       propertyPath: m_RootOrder
       value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 1692191363225150, guid: d7711937a086c13478b3477a2ae9d32c, type: 2}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d7711937a086c13478b3477a2ae9d32c, type: 2}
@@ -663,6 +675,10 @@ Prefab:
         type: 2}
       propertyPath: spawnRate
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1021999553489152, guid: fe4d4f282488e664fb78e79f2af83b93, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fe4d4f282488e664fb78e79f2af83b93, type: 2}
@@ -1468,6 +1484,10 @@ Prefab:
       propertyPath: spawnCount
       value: 350000000
       objectReference: {fileID: 0}
+    - target: {fileID: 1021999553489152, guid: fe4d4f282488e664fb78e79f2af83b93, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fe4d4f282488e664fb78e79f2af83b93, type: 2}
   m_IsPrefabParent: 0
@@ -2110,7 +2130,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh15016
+  m_Name: pb_Mesh12394
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -2595,6 +2615,10 @@ Prefab:
         type: 2}
       propertyPath: spawnCount
       value: 350000000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1021999553489152, guid: fe4d4f282488e664fb78e79f2af83b93, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fe4d4f282488e664fb78e79f2af83b93, type: 2}

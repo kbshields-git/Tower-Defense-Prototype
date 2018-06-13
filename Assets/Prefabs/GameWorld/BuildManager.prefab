@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4375240112862006}
   - component: {fileID: 114365964251863776}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: BuildManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51,6 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a4856d4b0e1ad046afc9d863d72fb90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bGrid: {fileID: 0}
   turretSlot1: {fileID: 1376639853518576, guid: 273124b60386c91419710322f8f6384d,
     type: 2}
   turret1HK: 49

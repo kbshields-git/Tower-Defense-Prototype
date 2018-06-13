@@ -88,6 +88,10 @@ public class Turret : MonoBehaviour {
             {
                 FindNextTarget();
             }
+            else
+            {
+                CheckSurroundings();
+            }
            
             return;
         }
@@ -112,6 +116,7 @@ public class Turret : MonoBehaviour {
     {
         hasBeenPlaced = true;
         gameObject.layer = 10;
+        CheckSurroundings();
     }
 
     private void IdleRotation()
@@ -120,6 +125,18 @@ public class Turret : MonoBehaviour {
         // <TODO>: Make turret swivel around slowly when not actively engaging a target
         Vector3 rotation = Quaternion.Lerp(pivotPart.rotation, Quaternion.Euler(0f, 0f, 0f), Time.deltaTime * pivotSpeed).eulerAngles;
         pivotPart.rotation = Quaternion.Euler(rotation.x, rotation.y, 0f);
+    }
+
+    private void CheckSurroundings()
+    {
+        LayerMask mask = 12;
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, range, mask);
+        int i = 0;
+        while (i < hitColliders.Length)
+        {
+            potentialTargets.Add(hitColliders[i].gameObject);
+            i++;
+        }
     }
 
     private void LockOnTarget()
@@ -132,20 +149,17 @@ public class Turret : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "enemyTag") //<TODO> Layer check instead of TAG
+        potentialTargets.Add(other.gameObject);
+        //If we don't have a valid target yet, check to see if we have LoS on this target and make it currentTarget
+        if (currentTarget == null)
         {
-            potentialTargets.Add(other.gameObject);
-            //If we don't have a valid target yet, check to see if we have LoS on this target and make it currentTarget
-            if (currentTarget == null)
+            if (ClearShot(other.gameObject))
             {
-                if (ClearShot(other.gameObject))
-                {
-                    currentTarget = other.gameObject;
-                }
+                currentTarget = other.gameObject;
             }
         }
     }
-    /*
+   
     private void OnTriggerExit(Collider other)
     {
         potentialTargets.Remove(other.gameObject);
@@ -159,7 +173,7 @@ public class Turret : MonoBehaviour {
         }
 
     }
-    */
+   
 
     void FindNextTarget()
     {
