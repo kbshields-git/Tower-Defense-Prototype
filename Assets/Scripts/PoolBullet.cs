@@ -8,8 +8,6 @@ public class PoolBullet : PooledObject {
     public bool bulletParticle = false;
     private Enemy target;
     
-
-    public float m_Velocity = 10f;
     public int m_BaseDamage = 1;
 
     public bool m_IsLit;

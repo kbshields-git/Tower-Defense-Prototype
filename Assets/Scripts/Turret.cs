@@ -54,7 +54,7 @@ public class Turret : MonoBehaviour {
     /// <summary>
     /// Boolean to avoid turrets firing while being placed into the world.
     /// </summary>
-    bool hasBeenPlaced = false;
+    [SerializeField] bool hasBeenPlaced = false;
 
     /// <summary>
     /// Boolean set when a clear shot has been determined.
@@ -66,13 +66,18 @@ public class Turret : MonoBehaviour {
     /// </summary>
     [SerializeField] protected List<GameObject> potentialTargets = new List<GameObject>();
     [SerializeField] protected List<GameObject> sortList = new List<GameObject>();
+    [SerializeField] private LayerMask enemyMask = 1 << 12;
+    [SerializeField] private int checkSurroundingsCount;
+    [SerializeField] private float checkFrequency=2f;
+    [SerializeField] private float timeSinceLastCheck;
 
     // Use this for initialization
-    void Start () {
+    void Awake () {
         currentTarget = null;
         hasBeenPlaced = false;
         gameObject.layer = 2; // Move to ignore raycast layer until Turret is placed.
         rangeTrigger.radius = range;
+        checkSurroundingsCount = 0;
 	}
 	
 	// Update is called once per frame
@@ -90,6 +95,7 @@ public class Turret : MonoBehaviour {
             }
             else
             {
+                //Debug.Log("Checking Surroundings because potentialTargets.Count>0 is false.");
                 CheckSurroundings();
             }
            
@@ -106,7 +112,12 @@ public class Turret : MonoBehaviour {
                 Shoot();
                 fireCountdown = 1f / fireRate;
             }
-            else { currentTarget = null; }
+            else
+            {
+                currentTarget = null;
+                //Debug.Log("Checking Surroundings because no ClearShot()");
+                CheckSurroundings();
+            }
         }
 
         fireCountdown -= Time.deltaTime;
@@ -114,6 +125,7 @@ public class Turret : MonoBehaviour {
 
     public void Build()
     {
+        Debug.Log("Build() has run!");
         hasBeenPlaced = true;
         gameObject.layer = 10;
         CheckSurroundings();
@@ -129,14 +141,31 @@ public class Turret : MonoBehaviour {
 
     private void CheckSurroundings()
     {
-        LayerMask mask = 12;
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, range, mask);
-        int i = 0;
-        while (i < hitColliders.Length)
+        LayerMask mask = 1<<12;
+        timeSinceLastCheck += Time.deltaTime;
+        if (timeSinceLastCheck >= checkFrequency)
         {
-            potentialTargets.Add(hitColliders[i].gameObject);
-            i++;
+            Collider[] hitColliders = Physics.OverlapSphere(transform.position, range, mask.value);
+            timeSinceLastCheck = 0;
+            checkSurroundingsCount++;
+        
+        int i = 0;
+            if (hitColliders.Length > 0)
+            {
+
+                while (i < hitColliders.Length)
+                {
+                    if (GameManager.instance.alwaysDrawGizmos & GameManager.instance.drawTurretGizmos)
+                    {
+                        Debug.DrawLine(transform.position, hitColliders[i].gameObject.transform.position, Color.red);
+                    }
+                    potentialTargets.Add(hitColliders[i].gameObject);
+                    i++;
+                }
+                FindNextTarget();
+            }
         }
+        else { return; }
     }
 
     private void LockOnTarget()
@@ -158,6 +187,7 @@ public class Turret : MonoBehaviour {
                 currentTarget = other.gameObject;
             }
         }
+        
     }
    
     private void OnTriggerExit(Collider other)
@@ -224,10 +254,10 @@ public class Turret : MonoBehaviour {
         {
             Debug.DrawRay(ray.origin, ray.direction * 5000, Color.yellow);
         }
-        if(Physics.Raycast(ray, out hit, range))
-        {
+        if(Physics.Raycast(ray, out hit, range, enemyMask))
+        { 
             sightedTarget = hit.transform;
-            if(hit.transform == targ.transform || hit.transform.tag == "enemyTag")
+            if(hit.transform == targ.transform)
             {
                 hasClearShot = true;
             }            
@@ -245,15 +275,17 @@ public class Turret : MonoBehaviour {
         if (bullet != null)
         {
             //Enemy enemyToShoot = currentTarget.GetComponent<Enemy>();
-
-            bullet.m_Velocity = fireVelocity;
+            float randomVelocityModifier = Random.Range(0.9f, 1.0f);
             bullet.m_BaseDamage = baseDamage;
             m_Firing.Play(m_turretAudio);
             //bullet.AcquireTarget(enemyToShoot);
+    
             bullet.transform.position = barrelTip.transform.position;
             bullet.transform.rotation = barrelTip.transform.rotation;
+
             bullet.FireBullet();
-            bullet.GetComponent<Rigidbody>().velocity = fireVelocity * barrelTip.forward;
+            //bullet.GetComponent<Rigidbody>().AddForce(fireVelocity * barrelTip.forward);
+            bullet.GetComponent<Rigidbody>().velocity = (fireVelocity * barrelTip.forward) * randomVelocityModifier;
         }
             
     }

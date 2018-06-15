@@ -4,8 +4,10 @@ using UnityEngine.AI;
 public class Enemy : PooledObject {
 
     
-     
-    
+    [Header("Parts")]
+    public AudioSource enemyAudio;
+    public AudioEvent audHit;
+
     [Header("Attributes")]
     public float speed = 3.5f;
     public int healthMaximum = 20;
@@ -72,6 +74,7 @@ public class Enemy : PooledObject {
 
     public void TakeDamage(int damage)
     {
+        audHit.Play(enemyAudio);
         if (currentHealth > damage)
         {
             currentHealth -= damage;

@@ -2,20 +2,24 @@
 
 public class BuildManager : MonoBehaviour {
     public static BuildManager instance;
+    [SerializeField] GameObject worldCursor;
     [SerializeField] BuildGrid bGrid;
     //Starting with 4 possible turrets. This will become much more fleshed out and UI driven eventually.
+    [SerializeField] GameObject turretBuild1;
     [SerializeField] GameObject turretSlot1;
     [SerializeField] KeyCode turret1HK = KeyCode.Alpha1;
+    /*
     [SerializeField] GameObject turretSlot2;
     [SerializeField] KeyCode turret2HK = KeyCode.Alpha2;
     [SerializeField] GameObject turretSlot3;
     [SerializeField] KeyCode turret3HK = KeyCode.Alpha3;
     [SerializeField] GameObject turretSlot4;
     [SerializeField] KeyCode turret4HK = KeyCode.Alpha4;
-
+    */
     [SerializeField] KeyCode rotateHK = KeyCode.R;
 
     GameObject selectedBuild;
+    GameObject wCursor;
     float mouseWheelRotation;
 
     // Simple singleton instantiation check
@@ -30,6 +34,8 @@ public class BuildManager : MonoBehaviour {
             Destroy(gameObject);
         }
         bGrid = FindObjectOfType<BuildGrid>();
+        wCursor = Instantiate(worldCursor);
+        wCursor.SetActive(true);
         
     }
     private void Update()
@@ -38,9 +44,16 @@ public class BuildManager : MonoBehaviour {
 
         if (selectedBuild != null)
         {
-            MoveCurrentObjectToMouse();
+            wCursor.SetActive(false);
+            MoveCurrentObjectToMouse(selectedBuild, false);
             Rotate();
             ReleaseIfClicked();
+        }
+        else
+        {
+            //Draw a stand in cursor
+            wCursor.SetActive(true);
+            MoveCurrentObjectToMouse(wCursor, true);
         }
     }
 
@@ -54,12 +67,12 @@ public class BuildManager : MonoBehaviour {
             }
             else
             {
-                selectedBuild = Instantiate(turretSlot1);
+                selectedBuild = Instantiate(turretBuild1);
             }
         }
     }
 
-    private void MoveCurrentObjectToMouse()
+    private void MoveCurrentObjectToMouse(GameObject obj, bool isCursor)
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -69,10 +82,14 @@ public class BuildManager : MonoBehaviour {
         if (Physics.Raycast(ray, out hitInfo, 100f, layerMask))
         {
             layerMask = 1 << 10; //Lets check if we're hitting a turret now.
-            if (!Physics.Raycast(ray, out hitInfo, 100f, layerMask))
+            if (!Physics.Raycast(ray, out hitInfo, 100f, layerMask) & !isCursor)
             {
-                selectedBuild.transform.position = bGrid.GetNearestPointOnGrid(hitInfo.point);
+                    obj.transform.position = bGrid.GetNearestPointOnGrid(hitInfo.point);
                 //selectedBuild.transform.position = hitInfo.point;
+            }
+            else
+            {
+                obj.transform.position = hitInfo.point;
             }
         }
         if (GameManager.instance.alwaysDrawGizmos & GameManager.instance.drawBuildGizmos)
@@ -95,8 +112,15 @@ public class BuildManager : MonoBehaviour {
     {
         if (Input.GetMouseButtonDown(0))
         {
+
+            Transform buildLoc = selectedBuild.transform;
+            Destroy(selectedBuild);
+            selectedBuild = Instantiate(turretSlot1, buildLoc.position, buildLoc.rotation);
+
             selectedBuild.GetComponent<Turret>().Build();
             selectedBuild = null;
+            wCursor.SetActive(true);
+            MoveCurrentObjectToMouse(wCursor, true);
         }
     }
 }

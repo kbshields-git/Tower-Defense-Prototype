@@ -55,5 +55,5 @@ MonoBehaviour:
     type: 2}
   spawnRate: 0.1
   spawnCount: 350000000
-  burstCount: 10
+  burstCount: 3
   coolDown: 5

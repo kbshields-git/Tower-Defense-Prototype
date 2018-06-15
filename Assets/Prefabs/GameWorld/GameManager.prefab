@@ -56,6 +56,6 @@ MonoBehaviour:
   alwaysDrawGizmos: 1
   drawBuildGizmos: 0
   drawGridGizmos: 0
-  drawTurretGizmos: 0
-  drawEnemyGizmos: 1
-  drawSpawnGizmos: 1
+  drawTurretGizmos: 1
+  drawEnemyGizmos: 0
+  drawSpawnGizmos: 0

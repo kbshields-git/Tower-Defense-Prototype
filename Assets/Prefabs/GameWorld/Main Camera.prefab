@@ -114,9 +114,10 @@ MonoBehaviour:
   panSpeed: 30
   panBorderThickness: 10
   scrollSpeed: 5
-  minY: 3
-  maxY: 80
-  minX: -5
-  maxX: 5
-  minZ: -12
-  maxZ: 4
+  minY: 1
+  maxY: 120
+  minX: -35
+  maxX: 40
+  minZ: -60
+  maxZ: 24
+  mousePan: 0

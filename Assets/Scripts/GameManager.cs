@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour {
     public bool drawTurretGizmos = true;
     public bool drawEnemyGizmos = true;
     public bool drawSpawnGizmos = true;
-
+    public bool hideCursor = true;
 	// Use this for initialization
 	void Awake () {
 		if (instance == null)
@@ -23,7 +23,10 @@ public class GameManager : MonoBehaviour {
         {
             Destroy(gameObject);
         }
-
+        if (hideCursor)
+        {
+            Cursor.visible = false;
+        }
         DontDestroyOnLoad(gameObject);
         if (buildManager == null)
         {
@@ -35,6 +38,26 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+        GetInput();
 	}
+
+    void GetInput()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            ToggleCursor();
+        }
+    }
+
+    private static void ToggleCursor()
+    {
+        if (Cursor.visible)
+        {
+            Cursor.visible = false;
+        }
+        else
+        {
+            Cursor.visible = true;
+        }
+    }
 }

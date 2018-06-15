@@ -51,14 +51,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a4856d4b0e1ad046afc9d863d72fb90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  worldCursor: {fileID: 1944506706680418, guid: 629a2c97410cdc04aa8ea897acb3d260,
+    type: 2}
   bGrid: {fileID: 0}
+  turretBuild1: {fileID: 1376639853518576, guid: 1904304e82b25ab47be34fca7e66d989,
+    type: 2}
   turretSlot1: {fileID: 1376639853518576, guid: 273124b60386c91419710322f8f6384d,
     type: 2}
   turret1HK: 49
-  turretSlot2: {fileID: 0}
-  turret2HK: 50
-  turretSlot3: {fileID: 0}
-  turret3HK: 51
-  turretSlot4: {fileID: 0}
-  turret4HK: 52
   rotateHK: 114
