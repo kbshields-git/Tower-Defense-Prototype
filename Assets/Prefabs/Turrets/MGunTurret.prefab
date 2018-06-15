@@ -169,7 +169,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1549647766926936}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.029999971, z: 0.643}
+  m_LocalPosition: {x: 0, y: 0.029999971, z: 0.456}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4634206915392822}
@@ -592,8 +592,10 @@ MonoBehaviour:
   rangeTrigger: {fileID: 135253008519594942}
   m_turretAudio: {fileID: 82401221908784250}
   m_Firing: {fileID: 11400000, guid: 75a59135128649d4f9bfd148d2728235, type: 2}
+  buildEffect: {fileID: 11400000, guid: 01f322c48d1e6cb48b6eea79e78cb07f, type: 2}
   currentTarget: {fileID: 0}
   sightedTarget: {fileID: 0}
+  hasBeenPlaced: 0
   hasClearShot: 0
   potentialTargets: []
   sortList: []

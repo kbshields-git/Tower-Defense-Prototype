@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb62f04014c8a7e49a2f83185eda292c, type: 3}
+  m_Name: MGunTurret Assemble
+  m_EditorClassIdentifier: 
+  clipIndex: 1
+  playRandom: 0
+  clips:
+  - {fileID: 8300000, guid: 27a85a525305a5b4b8216b9ecc832188, type: 3}
+  volume:
+    minValue: 0.99999994
+    maxValue: 0.99999994
+  pitch:
+    minValue: 0.87793136
+    maxValue: 1.0222489

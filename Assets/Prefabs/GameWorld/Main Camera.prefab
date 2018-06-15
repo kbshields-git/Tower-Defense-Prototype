@@ -23,7 +23,9 @@ GameObject:
   - component: {fileID: 81074574388890872}
   - component: {fileID: 114062569023352646}
   - component: {fileID: 114705463083403144}
-  m_Layer: 0
+  - component: {fileID: 114576376436033116}
+  - component: {fileID: 114590191232662656}
+  m_Layer: 8
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -37,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1820939512533012}
   m_LocalRotation: {x: 0.38268277, y: -0, z: -0, w: 0.92387986}
-  m_LocalPosition: {x: 0.99, y: 8.04, z: -9.29}
+  m_LocalPosition: {x: 0.99, y: 26, z: -17}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -99,6 +101,79 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1101302227835704, guid: 42173b06937504748859450e2226c8d7,
     type: 2}
+--- !u!114 &114576376436033116
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1820939512533012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeTrigger: {fileID: 4704063501569006}
+  volumeLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  stopNaNPropagation: 1
+  antialiasingMode: 2
+  temporalAntialiasing:
+    jitterSpread: 0.75
+    sharpness: 0.25
+    stationaryBlending: 0.95
+    motionBlending: 0.85
+  subpixelMorphologicalAntialiasing:
+    quality: 2
+  fastApproximateAntialiasing:
+    fastMode: 0
+    keepAlpha: 0
+  fog:
+    enabled: 1
+    excludeSkybox: 1
+  debugLayer:
+    lightMeter:
+      width: 512
+      height: 256
+      showCurves: 1
+    histogram:
+      width: 512
+      height: 256
+      channel: 3
+    waveform:
+      exposure: 0.12
+      height: 256
+    vectorscope:
+      size: 256
+      exposure: 0.12
+    overlaySettings:
+      motionColorIntensity: 4
+      motionGridSize: 64
+      colorBlindnessType: 0
+      colorBlindnessStrength: 1
+  m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
+  m_ShowToolkit: 0
+  m_ShowCustomSorter: 0
+  breakBeforeColorGrading: 0
+  m_BeforeTransparentBundles: []
+  m_BeforeStackBundles: []
+  m_AfterStackBundles: []
+--- !u!114 &114590191232662656
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1820939512533012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharedProfile: {fileID: 11400000, guid: 7f52566ed11c3fa4d9292c81b2aa8626, type: 2}
+  isGlobal: 1
+  blendDistance: 0
+  weight: 1
+  priority: 0
 --- !u!114 &114705463083403144
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -113,11 +188,14 @@ MonoBehaviour:
   debugOut: {fileID: 0}
   panSpeed: 30
   panBorderThickness: 10
-  scrollSpeed: 5
-  minY: 1
+  scrollSpeed: 1
+  minY: 4
   maxY: 120
   minX: -35
   maxX: 40
   minZ: -60
   maxZ: 24
+  angleAtMinY: {x: 15, y: 0, z: 0}
+  angleAtMidY: {x: 60, y: 0, z: 0}
+  angleAtMaxY: {x: 90, y: 0, z: 0}
   mousePan: 0

@@ -43,6 +43,7 @@ public class Turret : MonoBehaviour {
     public SphereCollider rangeTrigger;
     public AudioSource m_turretAudio;
     public AudioEvent m_Firing;
+    public AudioEvent buildEffect;
 
     [Header("Tracking")]
     /// <summary>
@@ -125,9 +126,9 @@ public class Turret : MonoBehaviour {
 
     public void Build()
     {
-        Debug.Log("Build() has run!");
         hasBeenPlaced = true;
         gameObject.layer = 10;
+        buildEffect.Play(m_turretAudio);
         CheckSurroundings();
     }
 

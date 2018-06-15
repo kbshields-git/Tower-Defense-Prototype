@@ -82,12 +82,15 @@ public class BuildManager : MonoBehaviour {
         if (Physics.Raycast(ray, out hitInfo, 100f, layerMask))
         {
             layerMask = 1 << 10; //Lets check if we're hitting a turret now.
-            if (!Physics.Raycast(ray, out hitInfo, 100f, layerMask) & !isCursor)
+            if (!Physics.Raycast(ray, out hitInfo, 100f, layerMask) && !isCursor)
             {
+                if (!isCursor)
+                {
                     obj.transform.position = bGrid.GetNearestPointOnGrid(hitInfo.point);
+                }
                 //selectedBuild.transform.position = hitInfo.point;
             }
-            else
+            else if(isCursor)
             {
                 obj.transform.position = hitInfo.point;
             }
