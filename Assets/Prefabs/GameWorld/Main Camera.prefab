@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 20379580331168728}
   - component: {fileID: 81074574388890872}
   - component: {fileID: 114062569023352646}
-  - component: {fileID: 114705463083403144}
+  - component: {fileID: 114766659564342250}
   - component: {fileID: 114576376436033116}
   - component: {fileID: 114590191232662656}
   m_Layer: 8
@@ -174,7 +174,7 @@ MonoBehaviour:
   blendDistance: 0
   weight: 1
   priority: 0
---- !u!114 &114705463083403144
+--- !u!114 &114766659564342250
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -182,20 +182,55 @@ MonoBehaviour:
   m_GameObject: {fileID: 1820939512533012}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5416fd05a6d2d8e4cb1df1c36da3ebf1, type: 3}
+  m_Script: {fileID: 11500000, guid: ee7b9ef14bae6c241ad762c4b90a089e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugOut: {fileID: 0}
-  panSpeed: 30
-  panBorderThickness: 10
-  scrollSpeed: 1
-  minY: 4
-  maxY: 120
-  minX: -35
-  maxX: 40
-  minZ: -60
-  maxZ: 24
-  angleAtMinY: {x: 15, y: 0, z: 0}
-  angleAtMidY: {x: 60, y: 0, z: 0}
-  angleAtMaxY: {x: 90, y: 0, z: 0}
-  mousePan: 0
+  lastTab: 2
+  movementSettingsFoldout: 0
+  zoomingSettingsFoldout: 0
+  rotationSettingsFoldout: 0
+  heightSettingsFoldout: 0
+  mapLimitSettingsFoldout: 0
+  targetingSettingsFoldout: 0
+  inputSettingsFoldout: 0
+  useFixedUpdate: 0
+  keyboardMovementSpeed: 100
+  screenEdgeMovementSpeed: 3
+  followingSpeed: 5
+  rotationSped: 100
+  panningSpeed: 10
+  mouseRotationSpeed: 100
+  autoHeight: 1
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 512
+  angleAtMinY: {x: 0, y: 0, z: 0}
+  angleAtMidY: {x: 0, y: 0, z: 0}
+  angleAtMaxY: {x: 0, y: 0, z: 0}
+  maxHeight: 40
+  minHeight: 4
+  heightDampening: 5
+  keyboardZoomingSensitivity: 6
+  scrollWheelZoomingSensitivity: 30
+  limitMap: 1
+  limitX: 50
+  limitY: 50
+  targetFollow: {fileID: 0}
+  targetOffset: {x: 0, y: 0, z: 10}
+  useScreenEdgeInput: 1
+  screenEdgeBorder: 25
+  useKeyboardInput: 1
+  horizontalAxis: Horizontal
+  verticalAxis: Vertical
+  usePanning: 0
+  panningKey: 325
+  useKeyboardZooming: 1
+  zoomInKey: 101
+  zoomOutKey: 113
+  useScrollwheelZooming: 1
+  zoomingAxis: Mouse ScrollWheel
+  useKeyboardRotation: 1
+  rotateRightKey: 120
+  rotateLeftKey: 122
+  useMouseRotation: 1
+  mouseRotationKey: 326
