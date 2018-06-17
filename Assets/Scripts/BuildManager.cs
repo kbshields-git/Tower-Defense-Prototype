@@ -5,12 +5,20 @@ public class BuildManager : MonoBehaviour {
     [SerializeField] GameObject worldCursor;
     [SerializeField] BuildGrid bGrid;
     //Starting with 4 possible turrets. This will become much more fleshed out and UI driven eventually.
+/*
+    [SerializeField] GameObject[] turretBuilds;
+    [SerializeField] GameObject[] turretGOs;
+    [SerializeField] KeyCode[] turretKeys;
+*/        
+   
     [SerializeField] GameObject turretBuild1;
     [SerializeField] GameObject turretSlot1;
     [SerializeField] KeyCode turret1HK = KeyCode.Alpha1;
     /*
+    [SerializeField] GameObject turretBuild2;
     [SerializeField] GameObject turretSlot2;
     [SerializeField] KeyCode turret2HK = KeyCode.Alpha2;
+    
     [SerializeField] GameObject turretSlot3;
     [SerializeField] KeyCode turret3HK = KeyCode.Alpha3;
     [SerializeField] GameObject turretSlot4;
@@ -117,6 +125,7 @@ public class BuildManager : MonoBehaviour {
         {
 
             Transform buildLoc = selectedBuild.transform;
+
             Destroy(selectedBuild);
             selectedBuild = Instantiate(turretSlot1, buildLoc.position, buildLoc.rotation);
 
