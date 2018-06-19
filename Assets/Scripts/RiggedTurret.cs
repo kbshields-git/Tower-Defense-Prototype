@@ -2,10 +2,9 @@
 using UnityEngine;
 [DisallowMultipleComponent]
 
-public class Turret : MonoBehaviour {
-
-
-
+public class RiggedTurret : MonoBehaviour {
+    // Created a seperate Turret class to branch away from my goofy Unity Asset turrets to Blender Rigged turrets
+    // I was making too many weird code choices to decide if it was one or the other...
     [Header("Projectiles")]
     /// <summary>
     /// Bullet gameObject
@@ -26,7 +25,9 @@ public class Turret : MonoBehaviour {
     /// </summary>
     public float range = 15f;
 
-    public float pivotSpeed = 10f;
+    public float basePivotSpeed = 3f;
+    public float elePivotSpeed = 2f;
+    public float headPivotSpeed = 20f;
 
     public float fireRate = 1f;
     private float fireCountdown = 0f;
@@ -35,9 +36,16 @@ public class Turret : MonoBehaviour {
 
 
     [Header("Turret Parts")]
-    [SerializeField] Transform pivotPart;
-    [SerializeField] Transform YpivotPart;
+    [SerializeField] Transform rootSwivel;
+    [SerializeField] Transform elevatorArmSwivel;
+    [SerializeField] Transform turretHeadSwivel;
     [SerializeField] Transform barrelTip;
+
+    // 3 Transforms for capturing inital resting positions of turret
+    [SerializeField] Quaternion restRootSwivel;
+    [SerializeField] Quaternion restEleArmSwivel;
+    [SerializeField] Quaternion restTurretHeadSwivel;
+
     /// <summary>
     /// Collider to detect enemies in range
     /// </summary>
@@ -72,21 +80,23 @@ public class Turret : MonoBehaviour {
     [SerializeField] private int checkSurroundingsCount;
     [SerializeField] private float checkFrequency=2f;
     [SerializeField] private float timeSinceLastCheck;
-    private bool xy_seperate = false;
+    private void Start()
+    {
+        restRootSwivel = rootSwivel.rotation;
+        restEleArmSwivel = elevatorArmSwivel.rotation;
+        restTurretHeadSwivel = turretHeadSwivel.rotation;
+    }
     // Use this for initialization
     void Awake () {
         currentTarget = null;
-        hasBeenPlaced = false;
+        //hasBeenPlaced = true;
         gameObject.layer = 2; // Move to ignore raycast layer until Turret is placed.
         rangeTrigger.radius = range;
         checkSurroundingsCount = 0;
-        if (YpivotPart)
-        {
-            xy_seperate = true;
-            // Lets capture initial rotations for bones so we can avoid creating crazy rotation problems
-            
-            //Debug.Log(gameObject.transform.rotation);
-        }
+
+        // Set these one time and then use them to return to rest
+
+
 	}
 	
 	// Update is called once per frame
@@ -144,16 +154,14 @@ public class Turret : MonoBehaviour {
     {
         // For now, I'm just letting the turret rotate back to a straight forward position to keep it simple
         // <TODO>: Make turret swivel around slowly when not actively engaging a target
-        Vector3 rotation = Quaternion.Lerp(pivotPart.rotation, Quaternion.Euler(0f, 0f, 0f), Time.deltaTime * pivotSpeed).eulerAngles;
-        if (!xy_seperate)
-        {
-            pivotPart.rotation = Quaternion.Euler(rotation.x, rotation.y, 0f);
-        }
-        if (xy_seperate)
-        {
-            //pivotPart.localRotation = Quaternion.Euler(0f, 0f, rotation.y);
-            //YpivotPart.rotation = Quaternion.Euler(rotation.x, 0f, 0f);
-        }
+        Vector3 horRotation = Quaternion.Lerp(rootSwivel.rotation, restRootSwivel, Time.deltaTime * basePivotSpeed).eulerAngles;
+        Vector3 elevRotation = Quaternion.Lerp(elevatorArmSwivel.rotation, restEleArmSwivel, Time.deltaTime * elePivotSpeed).eulerAngles;
+        Vector3 headRotation = Quaternion.Lerp(turretHeadSwivel.rotation, restTurretHeadSwivel, Time.deltaTime * headPivotSpeed).eulerAngles;
+
+        rootSwivel.rotation = Quaternion.Euler(rootSwivel.rotation.x, horRotation.y, rootSwivel.rotation.z);
+        elevatorArmSwivel.rotation = Quaternion.Euler(elevRotation.x, elevRotation.y, elevRotation.z);
+        turretHeadSwivel.rotation = Quaternion.Euler(turretHeadSwivel.rotation.x, headRotation.y, turretHeadSwivel.rotation.z);
+        //turretHeadSwivel.rotation = Quaternion.Euler(turretHeadSwivel.rotation.x, turretHeadSwivel.rotation.y, turretHeadSwivel.rotation.z);
     }
 
     private void CheckSurroundings()
@@ -187,22 +195,28 @@ public class Turret : MonoBehaviour {
 
     private void LockOnTarget()
     {
-        Vector3 dir = currentTarget.transform.position - transform.position;
-        Quaternion lookRotation = Quaternion.LookRotation(dir);
-        Vector3 rotation = Quaternion.Lerp(pivotPart.rotation, lookRotation, Time.deltaTime * pivotSpeed).eulerAngles;
-        //Debug.Log(rotation);
-        if (!xy_seperate)
-        {
-          
-            pivotPart.rotation = Quaternion.Euler(rotation.x, rotation.y, 0f);
-        }
-        else
-        {
-            pivotPart.rotation = Quaternion.Euler(0f, 0f, rotation.y);
-            //pivotPart.localRotation = Quaternion.Euler(rotation.x, 0f, 0f);
-            //pivotPart.rotation = Quaternion.Euler(0f, rotation.y, 0f);
-            //YpivotPart.rotation = Quaternion.Euler(0f, 0f, 0f);
-        }
+        //Pivot Rotor Plate
+        Vector3 rootDir = currentTarget.transform.position - rootSwivel.position;
+        Quaternion lookRotation = Quaternion.LookRotation(rootDir);
+        Vector3 rootRotation = Quaternion.Lerp(rootSwivel.rotation, lookRotation, Time.deltaTime * basePivotSpeed).eulerAngles;
+        rootSwivel.rotation = Quaternion.Euler(rootSwivel.rotation.x, rootRotation.y, rootSwivel.rotation.z);
+
+        //Elevate Turret Arm
+        Vector3 eleDir = currentTarget.transform.position - elevatorArmSwivel.position;        
+        lookRotation = Quaternion.LookRotation(eleDir);
+        Vector3 eleRotation = Quaternion.Lerp(elevatorArmSwivel.rotation, lookRotation, Time.deltaTime * elePivotSpeed).eulerAngles;
+        //elevatorArmSwivel.rotation = Quaternion.Euler(elevatorArmSwivel.rotation.x, eleRotation.y, elevatorArmSwivel.rotation.z);
+        elevatorArmSwivel.rotation = Quaternion.Euler(eleRotation.x, eleRotation.y, eleRotation.z);
+
+        //Aim Turret Head
+        Vector3 headDir = currentTarget.transform.position - turretHeadSwivel.position;
+        lookRotation = Quaternion.LookRotation(headDir);
+        Vector3 headRotation = Quaternion.Lerp(turretHeadSwivel.rotation, lookRotation, Time.deltaTime * headPivotSpeed).eulerAngles;
+        //turretHeadSwivel.rotation = Quaternion.Euler(turretHeadSwivel.rotation.x, headRotation.y, turretHeadSwivel.rotation.z);
+        //turretHeadSwivel.rotation = Quaternion.Euler(headRotation.x, turretHeadSwivel.rotation.y, turretHeadSwivel.rotation.z);
+        turretHeadSwivel.rotation = Quaternion.Euler(headRotation.x, headRotation.y, headRotation.z);
+
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -274,10 +288,10 @@ public class Turret : MonoBehaviour {
     bool ClearShot(GameObject targ)
     {
         hasClearShot = false;
-        float aimHeightOffset = 0.5f;
+        //float aimHeightOffset = 0.5f;
         RaycastHit hit;
-        Vector3 dir = targ.transform.position - transform.position;
-        dir.y -= aimHeightOffset;
+        Vector3 dir = targ.transform.position - barrelTip.position;
+        //dir.y -= aimHeightOffset;
         Ray ray = new Ray(barrelTip.position, dir);
         if (GameManager.instance.alwaysDrawGizmos & GameManager.instance.drawTurretGizmos)
         {
@@ -329,10 +343,14 @@ public class Turret : MonoBehaviour {
             {
                 Gizmos.DrawWireSphere(currentTarget.transform.position, 2f);
                 
-                Gizmos.DrawRay(pivotPart.position, pivotPart.forward);
+                Gizmos.DrawRay(rootSwivel.position, rootSwivel.forward);
                 Gizmos.color = Color.green;
-                Gizmos.DrawLine(pivotPart.position, currentTarget.transform.position);
+                Gizmos.DrawLine(turretHeadSwivel.position, currentTarget.transform.position);
+
+
             }
+            Gizmos.color = Color.blue;
+            Gizmos.DrawRay(turretHeadSwivel.position, turretHeadSwivel.forward);
         }
     }
 }

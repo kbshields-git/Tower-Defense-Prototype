@@ -1,74 +1,64 @@
 fileFormatVersion: 2
-guid: e4ecc72887c7ca94f81e95bb158d087f
+guid: 233064fe862229d4ea41896ff9f98639
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: Armature
     100002: Base_Arms
     100004: Base_Foot
-    100006: Bone
-    100008: Bone.001
-    100010: Bone.002
-    100012: Bone.002_end
-    100014: Camera
-    100016: GroundPlate
-    100018: Point
-    100020: //RootNode
-    100022: Spot
-    100024: Spot.001
-    100026: Swivel_Base
-    100028: Swivel_RotorPlate
-    100030: Turret_Body
-    100032: Vert_Body_Swivel
-    100034: Vert_Head_Swivel
-    100036: Vert_Swivel_Arms
+    100006: //RootNode
+    100008: Swivel_Base
+    100010: Swivel_RotorPlate
+    100012: Turret_Barrel
+    100014: Turret_Barrel_Muzzel
+    100016: Turret_Body
+    100018: Vert_Body_Swivel
+    100020: Vert_Head_Swivel
+    100022: Vert_Swivel_Arms
+    100024: x_ArmsSwivel
+    100026: x_TurretHeadBone
+    100028: x_TurretHeadBone_end
+    100030: y_BaseSwivel
     400000: Armature
     400002: Base_Arms
     400004: Base_Foot
-    400006: Bone
-    400008: Bone.001
-    400010: Bone.002
-    400012: Bone.002_end
-    400014: Camera
-    400016: GroundPlate
-    400018: Point
-    400020: //RootNode
-    400022: Spot
-    400024: Spot.001
-    400026: Swivel_Base
-    400028: Swivel_RotorPlate
-    400030: Turret_Body
-    400032: Vert_Body_Swivel
-    400034: Vert_Head_Swivel
-    400036: Vert_Swivel_Arms
-    2000000: Camera
+    400006: //RootNode
+    400008: Swivel_Base
+    400010: Swivel_RotorPlate
+    400012: Turret_Barrel
+    400014: Turret_Barrel_Muzzel
+    400016: Turret_Body
+    400018: Vert_Body_Swivel
+    400020: Vert_Head_Swivel
+    400022: Vert_Swivel_Arms
+    400024: x_ArmsSwivel
+    400026: x_TurretHeadBone
+    400028: x_TurretHeadBone_end
+    400030: y_BaseSwivel
     2100000: No Name
     2100002: Material
-    2300000: GroundPlate
-    2300002: Swivel_Base
-    2300004: Turret_Body
-    3300000: GroundPlate
-    3300002: Swivel_Base
-    3300004: Turret_Body
-    4300000: Vert_Head_Swivel
-    4300002: Vert_Body_Swivel
-    4300004: Vert_Swivel_Arms
-    4300006: Base_Arms
-    4300008: Base_Foot
-    4300010: Swivel_RotorPlate
-    4300012: Turret_Body
-    4300014: Swivel_Base
-    4300016: GroundPlate
+    4300000: Turret_Barrel_Muzzel
+    4300002: Turret_Barrel
+    4300004: Vert_Head_Swivel
+    4300006: Vert_Body_Swivel
+    4300008: Vert_Swivel_Arms
+    4300010: Base_Arms
+    4300012: Base_Foot
+    4300014: Swivel_RotorPlate
+    4300016: Swivel_Base
+    4300018: Turret_Body
     9500000: //RootNode
-    10800000: Point
-    10800002: Spot
-    10800004: Spot.001
     13700000: Base_Arms
     13700002: Base_Foot
-    13700004: Swivel_RotorPlate
-    13700006: Vert_Body_Swivel
-    13700008: Vert_Head_Swivel
-    13700010: Vert_Swivel_Arms
+    13700004: Swivel_Base
+    13700006: Swivel_RotorPlate
+    13700008: Turret_Barrel
+    13700010: Turret_Barrel_Muzzel
+    13700012: Turret_Body
+    13700014: Vert_Body_Swivel
+    13700016: Vert_Head_Swivel
+    13700018: Vert_Swivel_Arms
+    2186277476908879412: ImportLogs
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -105,8 +95,8 @@ ModelImporter:
     addColliders: 0
     importVisibility: 1
     importBlendShapes: 1
-    importCameras: 1
-    importLights: 1
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -138,7 +128,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    rootMotionBoneName: 
+    rootMotionBoneName: y_BaseSwivel
     rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
