@@ -129,7 +129,7 @@ public class BuildManager : MonoBehaviour {
             Destroy(selectedBuild);
             selectedBuild = Instantiate(turretSlot1, buildLoc.position, buildLoc.rotation);
 
-            selectedBuild.GetComponent<Turret>().Build();
+            selectedBuild.GetComponent<RiggedTurret>().Build();
             selectedBuild = null;
             wCursor.SetActive(true);
             MoveCurrentObjectToMouse(wCursor, true);

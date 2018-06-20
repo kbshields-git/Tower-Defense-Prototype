@@ -54,9 +54,9 @@ MonoBehaviour:
   worldCursor: {fileID: 1944506706680418, guid: 629a2c97410cdc04aa8ea897acb3d260,
     type: 2}
   bGrid: {fileID: 0}
-  turretBuild1: {fileID: 1376639853518576, guid: 1904304e82b25ab47be34fca7e66d989,
+  turretBuild1: {fileID: 1708252693653086, guid: 62783a84ee781814fa8d6cf14d4ac1b9,
     type: 2}
-  turretSlot1: {fileID: 1376639853518576, guid: 273124b60386c91419710322f8f6384d,
+  turretSlot1: {fileID: 1708252693653086, guid: c097dc44c6bee1246b685821011bd22e,
     type: 2}
   turret1HK: 49
   rotateHK: 114
