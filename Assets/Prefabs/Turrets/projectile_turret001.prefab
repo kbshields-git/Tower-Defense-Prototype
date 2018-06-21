@@ -20,7 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4953310264796088}
   - component: {fileID: 95751532292194090}
-  m_Layer: 0
+  - component: {fileID: 65140878925420996}
+  m_Layer: 10
   m_Name: proj_turret_base08
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35,7 +36,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4713587882272630}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Armature
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51,7 +52,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4428063887347944}
   - component: {fileID: 137612194890646274}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Vert_Swivel_Arms
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67,7 +68,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4445202844103876}
   - component: {fileID: 137628533680168090}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Swivel_Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -82,7 +83,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4825453149314834}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: x_TurretHeadBone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +99,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4977965986803638}
   - component: {fileID: 137422793708602306}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Base_Arms
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,7 +115,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4997697880650790}
   - component: {fileID: 137982037975909928}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Turret_Barrel_Muzzel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,7 +131,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4303099776651940}
   - component: {fileID: 137420184807869808}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Swivel_RotorPlate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -145,7 +146,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4430382995504926}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: y_BaseSwivel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -161,7 +162,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4876242148737974}
   - component: {fileID: 137910851452788188}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Turret_Barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +178,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4545084829463696}
   - component: {fileID: 137500125148297694}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Base_Foot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -193,7 +194,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4874959784637752}
   - component: {fileID: 137411876199512120}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Turret_Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -209,7 +210,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4286839691817208}
   - component: {fileID: 137668963785493918}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Vert_Body_Swivel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -227,7 +228,8 @@ GameObject:
   - component: {fileID: 114352426698981934}
   - component: {fileID: 135366534255153322}
   - component: {fileID: 82351440865242506}
-  m_Layer: 0
+  - component: {fileID: 208344352480825072}
+  m_Layer: 10
   m_Name: projectile_turret001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -242,7 +244,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4444870561406782}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: barrelTip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -257,7 +259,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4001255145974722}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: x_ArmsSwivel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -273,7 +275,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4487424556361264}
   - component: {fileID: 137658117557109286}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Vert_Head_Swivel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -288,7 +290,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4093597604916690}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: x_TurretHeadBone_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -329,7 +331,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1708252693653086}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.059998, y: 0.005, z: -5.512}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4953310264796088}
@@ -510,7 +512,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000236093216180}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.0125, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4713587882272630}
@@ -546,6 +548,18 @@ Transform:
   m_Father: {fileID: 4876242148737974}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &65140878925420996
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000236093216180}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!82 &82351440865242506
 AudioSource:
   m_ObjectHideFlags: 1
@@ -1278,3 +1292,18 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.0000026684538, y: 0.003175649, z: 0.00079881353}
     m_Extent: {x: 0.000026303513, y: 0.000026303576, z: 0.00046744107}
   m_DirtyAABB: 0
+--- !u!208 &208344352480825072
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1708252693653086}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5

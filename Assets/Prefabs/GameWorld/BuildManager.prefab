@@ -59,4 +59,9 @@ MonoBehaviour:
   turretSlot1: {fileID: 1708252693653086, guid: c097dc44c6bee1246b685821011bd22e,
     type: 2}
   turret1HK: 49
+  turretBuild2: {fileID: 1376639853518576, guid: 1904304e82b25ab47be34fca7e66d989,
+    type: 2}
+  turretSlot2: {fileID: 1376639853518576, guid: 273124b60386c91419710322f8f6384d,
+    type: 2}
+  turret2HK: 50
   rotateHK: 114

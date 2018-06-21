@@ -14,11 +14,11 @@ public class BuildManager : MonoBehaviour {
     [SerializeField] GameObject turretBuild1;
     [SerializeField] GameObject turretSlot1;
     [SerializeField] KeyCode turret1HK = KeyCode.Alpha1;
-    /*
+    
     [SerializeField] GameObject turretBuild2;
     [SerializeField] GameObject turretSlot2;
     [SerializeField] KeyCode turret2HK = KeyCode.Alpha2;
-    
+    /*
     [SerializeField] GameObject turretSlot3;
     [SerializeField] KeyCode turret3HK = KeyCode.Alpha3;
     [SerializeField] GameObject turretSlot4;
@@ -78,6 +78,18 @@ public class BuildManager : MonoBehaviour {
                 selectedBuild = Instantiate(turretBuild1);
             }
         }
+
+        if (Input.GetKeyDown(turret2HK))
+        {
+            if (selectedBuild != null)
+            {
+                Destroy(selectedBuild);
+            }
+            else
+            {
+                selectedBuild = Instantiate(turretBuild2);
+            }
+        }
     }
 
     private void MoveCurrentObjectToMouse(GameObject obj, bool isCursor)
@@ -105,7 +117,7 @@ public class BuildManager : MonoBehaviour {
         }
         if (GameManager.instance.alwaysDrawGizmos & GameManager.instance.drawBuildGizmos)
         {
-            Debug.DrawRay(ray.origin, ray.direction * 500f, Color.magenta);
+            Debug.DrawRay(ray.origin, ray.direction * 100f, Color.magenta);
         }
         //selectedBuild.transform.rotation = Quaternion.FromToRotation(Vector3.up, hitInfo.normal);
 
@@ -130,6 +142,8 @@ public class BuildManager : MonoBehaviour {
             selectedBuild = Instantiate(turretSlot1, buildLoc.position, buildLoc.rotation);
 
             selectedBuild.GetComponent<RiggedTurret>().Build();
+            //selectedBuild.GetComponent<Turret>().Build();
+
             selectedBuild = null;
             wCursor.SetActive(true);
             MoveCurrentObjectToMouse(wCursor, true);
