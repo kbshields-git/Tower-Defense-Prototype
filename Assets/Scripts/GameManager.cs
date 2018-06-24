@@ -1,11 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
+    #region Managers
     public static GameManager instance = null;
     public GameObject buildManagerPF;
     GameObject buildManager;
+
+    //public GameObject menuSystemPF;
+    public GameObject menuSystem;
+    UIManager uiManager;
+    #endregion
+
+    #region DebugVars
     public bool alwaysDrawGizmos = true;
     public bool drawBuildGizmos = true;
     public bool drawGridGizmos = true;
@@ -13,8 +22,10 @@ public class GameManager : MonoBehaviour {
     public bool drawEnemyGizmos = true;
     public bool drawSpawnGizmos = true;
     public bool hideCursor = true;
-	// Use this for initialization
-	void Awake () {
+    #endregion
+
+    // Use this for initialization
+    void Awake () {
 		if (instance == null)
         {
             instance = this;
@@ -33,6 +44,22 @@ public class GameManager : MonoBehaviour {
             buildManager = Instantiate(buildManagerPF, this.transform);
         }
 
+
+        Scene currentScene = SceneManager.GetActiveScene();
+        string sceneName = currentScene.name;
+        uiManager = menuSystem.GetComponent<UIManager>();
+           
+        if(sceneName == "Main Menu")
+        {
+            //Put uiManager into Main Menu mode.
+            uiManager.MainMenu();
+        }
+        else
+        {
+            //Put the uiManager into Level mode.
+            uiManager.PlayMode();
+        }
+
         //<TODO> Add level init calls etc.. here
     }
 	
@@ -45,18 +72,22 @@ public class GameManager : MonoBehaviour {
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            ToggleCursor();
+            TogglePause();
         }
     }
 
-    private static void ToggleCursor()
+    public void TogglePause()
     {
-        if (Cursor.visible)
+        if (Time.timeScale == 0)
         {
+            Time.timeScale = 1;
+            uiManager.PlayMode();
             Cursor.visible = false;
         }
         else
         {
+            Time.timeScale = 0;
+            uiManager.PauseMenu();
             Cursor.visible = true;
         }
     }

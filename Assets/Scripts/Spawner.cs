@@ -53,7 +53,7 @@ public class Spawner : MonoBehaviour {
         Enemy enemy = enemyPfab.GetPooledInstance<Enemy>();
         
         //enemy.gameObject.transform.position = transform.position;
-        Debug.Log(transform.position);
+        //Debug.Log(transform.position);
         //enemy.gameObject.transform.rotation = transform.rotation;
         if (GameManager.instance.alwaysDrawGizmos & GameManager.instance.drawSpawnGizmos)
         {
@@ -65,19 +65,23 @@ public class Spawner : MonoBehaviour {
 
         spawnCount--;
     }
-
+#if UNITY_EDITOR
     private void OnDrawGizmos()
     {
-        if (GameManager.instance.alwaysDrawGizmos & GameManager.instance.drawSpawnGizmos)
+        if (Application.isPlaying)
         {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position, 2f);
-            if (lastEnemy != null)
+            if (GameManager.instance.alwaysDrawGizmos & GameManager.instance.drawSpawnGizmos)
             {
-                Gizmos.DrawLine(transform.position, lastEnemy.position);
-                Gizmos.color = Color.magenta;
-                Gizmos.DrawWireSphere(lastEnemy.position, 2f);
+                Gizmos.color = Color.red;
+                Gizmos.DrawWireSphere(transform.position, 2f);
+                if (lastEnemy != null)
+                {
+                    Gizmos.DrawLine(transform.position, lastEnemy.position);
+                    Gizmos.color = Color.magenta;
+                    Gizmos.DrawWireSphere(lastEnemy.position, 2f);
+                }
             }
         }
     }
+#endif
 }

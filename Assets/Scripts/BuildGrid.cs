@@ -22,10 +22,10 @@ public class BuildGrid : MonoBehaviour
 
         return result;
     }
-
+#if UNITY_EDITOR
     private void OnDrawGizmos()
     {
-        if (GameManager.instance.alwaysDrawGizmos & GameManager.instance.drawGridGizmos)
+        if (GameManager.instance.alwaysDrawGizmos && GameManager.instance.drawGridGizmos)
         {
             Gizmos.color = Color.yellow;
             for (float x = -40; x < 40; x += size)
@@ -39,4 +39,5 @@ public class BuildGrid : MonoBehaviour
             }
         }
     }
+#endif
 }

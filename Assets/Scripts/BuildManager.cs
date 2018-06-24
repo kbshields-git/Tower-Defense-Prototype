@@ -48,20 +48,27 @@ public class BuildManager : MonoBehaviour {
     }
     private void Update()
     {
-        HandleNewObjectHotkey();
-
-        if (selectedBuild != null)
+        if (Time.timeScale > 0)
         {
-            wCursor.SetActive(false);
-            MoveCurrentObjectToMouse(selectedBuild, false);
-            Rotate();
-            ReleaseIfClicked();
+            HandleNewObjectHotkey();
+
+            if (selectedBuild != null)
+            {
+                wCursor.SetActive(false);
+                MoveCurrentObjectToMouse(selectedBuild, false);
+                Rotate();
+                ReleaseIfClicked();
+            }
+            else
+            {
+                //Draw a stand in cursor
+                wCursor.SetActive(true);
+                MoveCurrentObjectToMouse(wCursor, true);
+            }
         }
         else
         {
-            //Draw a stand in cursor
-            wCursor.SetActive(true);
-            MoveCurrentObjectToMouse(wCursor, true);
+            wCursor.SetActive(false);            
         }
     }
 
@@ -102,7 +109,7 @@ public class BuildManager : MonoBehaviour {
         if (Physics.Raycast(ray, out hitInfo, 100f, layerMask))
         {
             layerMask = 1 << 10; //Lets check if we're hitting a turret now.
-            if (!Physics.Raycast(ray, out hitInfo, 100f, layerMask) && !isCursor)
+            if (!isCursor && !Physics.Raycast(ray, out hitInfo, 100f, layerMask))
             {
                 if (!isCursor)
                 {
@@ -115,10 +122,12 @@ public class BuildManager : MonoBehaviour {
                 obj.transform.position = hitInfo.point;
             }
         }
+#if UNITY_EDITOR
         if (GameManager.instance.alwaysDrawGizmos & GameManager.instance.drawBuildGizmos)
         {
             Debug.DrawRay(ray.origin, ray.direction * 100f, Color.magenta);
         }
+#endif
         //selectedBuild.transform.rotation = Quaternion.FromToRotation(Vector3.up, hitInfo.normal);
 
     }

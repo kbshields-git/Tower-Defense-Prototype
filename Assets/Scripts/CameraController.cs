@@ -33,14 +33,10 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*
-        if (GameManager.GameIsOver)
+        if (Time.timeScale > 0)
         {
-            this.enabled = false;
-            return;
+            HandleInput();
         }
-        */
-        HandleInput();
     }
 
     private void HandleInput()
@@ -75,7 +71,7 @@ public class CameraController : MonoBehaviour
         debugOut.text = m_Transform.position.ToString();
         m_Transform.position = pos;
         float lerpmount = maxY / pos.y;
-        Debug.Log(lerpmount);
+        //Debug.Log(lerpmount);
 
         //Find the middle of the y range with a lerp of 50%
         float midY = Mathf.Lerp(minY, maxY, 0.5f);

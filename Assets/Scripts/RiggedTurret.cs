@@ -180,10 +180,12 @@ public class RiggedTurret : MonoBehaviour {
 
                 while (i < hitColliders.Length)
                 {
+#if UNITY_EDITOR
                     if (GameManager.instance.alwaysDrawGizmos & GameManager.instance.drawTurretGizmos)
                     {
                         Debug.DrawLine(transform.position, hitColliders[i].gameObject.transform.position, Color.red);
                     }
+#endif
                     potentialTargets.Add(hitColliders[i].gameObject);
                     i++;
                 }
@@ -293,10 +295,14 @@ public class RiggedTurret : MonoBehaviour {
         Vector3 dir = targ.transform.position - barrelTip.position;
         //dir.y -= aimHeightOffset;
         Ray ray = new Ray(barrelTip.position, dir);
+
+#if UNITY_EDITOR
         if (GameManager.instance.alwaysDrawGizmos & GameManager.instance.drawTurretGizmos)
         {
             Debug.DrawRay(ray.origin, ray.direction * 5000, Color.yellow);
         }
+#endif
+
         if(Physics.Raycast(ray, out hit, range, enemyMask))
         { 
             sightedTarget = hit.transform;
@@ -332,7 +338,7 @@ public class RiggedTurret : MonoBehaviour {
         }
             
     }
-
+#if UNITY_EDITOR
     private void OnDrawGizmos()
     {
         if (GameManager.instance.alwaysDrawGizmos & GameManager.instance.drawTurretGizmos)
@@ -353,4 +359,5 @@ public class RiggedTurret : MonoBehaviour {
             Gizmos.DrawRay(turretHeadSwivel.position, turretHeadSwivel.forward);
         }
     }
+#endif
 }

@@ -19,9 +19,11 @@ public class FlexibleUI : MonoBehaviour {
 
     public virtual void Update()
     {
+#if UNITY_EDITOR
         if (Application.isEditor)
         {
             OnSkinUI();
         }
+#endif
     }
 }
