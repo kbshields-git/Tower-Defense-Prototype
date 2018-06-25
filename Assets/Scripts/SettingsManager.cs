@@ -121,7 +121,15 @@ public class SettingsManager : MonoBehaviour {
 
     public void OnAntiAliasingChange()
     {
-        QualitySettings.antiAliasing = gameSettings.antiAliasing =(int)Mathf.Pow(2,antiAliasingDropdown.value);
+        gameSettings.antiAliasing = antiAliasingDropdown.value;
+        if (antiAliasingDropdown.value > 0)
+        {
+            QualitySettings.antiAliasing = (int)Mathf.Pow(2, antiAliasingDropdown.value);
+        }
+        else
+        {
+            QualitySettings.antiAliasing = 0;
+        }
         if (!settingsChanged) { OnSettingsChanged(); }
     }
 
@@ -207,6 +215,8 @@ public class SettingsManager : MonoBehaviour {
             masterVolumeSlider.value = Mathf.Clamp01(gameSettings.masterVolume);
             musicVolumeSlider.value = Mathf.Clamp01(gameSettings.musicVolume);
             sfxVolumeSlider.value = Mathf.Clamp01(gameSettings.sfxVolume);
+            settingsChanged = false;
+            applyButton.SetActive(false);
         }
         else
         {
