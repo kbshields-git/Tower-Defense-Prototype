@@ -17,20 +17,26 @@ public class SettingsManager : MonoBehaviour {
     public Slider masterVolumeSlider;
     public Slider musicVolumeSlider;
     public Slider sfxVolumeSlider;
+    public GameObject applyButton;
     public Resolution[] resolutions;
+
     #endregion
 
     public GameSettings gameSettings;
     private string gameSettingsFile = "gamesettings.json";
     private int scrnWidth;
     private int scrnHeight;
-
+    public bool settingsChanged;
     
 
     void OnEnable()
     {
         gameSettings = new GameSettings();
+        // Keep track of when changes happen, so we can show the apply button
+        settingsChanged = false;
+        applyButton.SetActive(false);
 
+        // Setup delegate methods for when settings change
         fullscreenToggle.onValueChanged.AddListener(delegate { OnFullscreenToggle(fullscreenToggle); });
         fullscreenModeDropdown.onValueChanged.AddListener(delegate { OnFullScreenMode(); });
         resolutionDropdown.onValueChanged.AddListener(delegate { OnResolutionChange(); });
@@ -40,7 +46,6 @@ public class SettingsManager : MonoBehaviour {
         masterVolumeSlider.onValueChanged.AddListener(OnMasterVolumeChange);
         musicVolumeSlider.onValueChanged.AddListener(OnMusicVolumeChange);
         sfxVolumeSlider.onValueChanged.AddListener(OnSfxVolumeChange);
-
         
         Resolution curRes = Screen.currentResolution;
         resolutions = Screen.resolutions;
@@ -81,7 +86,8 @@ public class SettingsManager : MonoBehaviour {
                 Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
             }
             Screen.SetResolution(scrnWidth, scrnHeight, true);
-        }        
+        }
+        if (!settingsChanged) { OnSettingsChanged(); }
     }
     
     public void OnFullScreenMode()
@@ -95,6 +101,7 @@ public class SettingsManager : MonoBehaviour {
             gameSettings.fullScreenMode = fullscreenModeDropdown.value = 1;
         }
         Screen.SetResolution(scrnWidth, scrnHeight, Screen.fullScreen);
+        if (!settingsChanged) { OnSettingsChanged(); }
     }
 
     public void OnResolutionChange()
@@ -103,21 +110,25 @@ public class SettingsManager : MonoBehaviour {
         scrnHeight = resolutions[resolutionDropdown.value].height;
         Screen.SetResolution(scrnWidth, scrnHeight, Screen.fullScreen);
         gameSettings.resolutionIndex = resolutionDropdown.value;
+        if (!settingsChanged) { OnSettingsChanged(); }
     }
 
     public void OnTextureQualityChange()
     {
-        QualitySettings.masterTextureLimit = gameSettings.textureQuality = textureQualityDropdown.value;        
+        QualitySettings.masterTextureLimit = gameSettings.textureQuality = textureQualityDropdown.value;
+        if (!settingsChanged) { OnSettingsChanged(); }
     }
 
     public void OnAntiAliasingChange()
     {
         QualitySettings.antiAliasing = gameSettings.antiAliasing =(int)Mathf.Pow(2,antiAliasingDropdown.value);
+        if (!settingsChanged) { OnSettingsChanged(); }
     }
 
     public void OnVsyncChange()
     {
         QualitySettings.vSyncCount = gameSettings.vsync = vSyncDropdown.value;
+        if (!settingsChanged) { OnSettingsChanged(); }
     }
 
     public void OnMasterVolumeChange(float volume)
@@ -131,6 +142,7 @@ public class SettingsManager : MonoBehaviour {
         {
             masterMixer.SetFloat("masterVol", Mathf.Log10(volume) * 20);
         }
+        if (!settingsChanged) { OnSettingsChanged(); }
     }
 
     public void OnMusicVolumeChange(float volume)
@@ -144,6 +156,7 @@ public class SettingsManager : MonoBehaviour {
         {
             masterMixer.SetFloat("musicVol", Mathf.Log10(volume) * 20);
         }
+        if (!settingsChanged) { OnSettingsChanged(); }
     }
 
     public void OnSfxVolumeChange(float volume)
@@ -157,6 +170,13 @@ public class SettingsManager : MonoBehaviour {
         {
             masterMixer.SetFloat("sfxVol", Mathf.Log10(volume) * 20);
         }
+        if (!settingsChanged) { OnSettingsChanged(); }
+    }
+
+    public void OnSettingsChanged()
+    {
+        settingsChanged = true;
+        applyButton.SetActive(true);
     }
     #endregion
 
@@ -166,6 +186,8 @@ public class SettingsManager : MonoBehaviour {
         string filePath = Path.Combine(Application.persistentDataPath, gameSettingsFile);
         string jsonData = JsonUtility.ToJson(gameSettings, true);
         File.WriteAllText(filePath, jsonData);
+        settingsChanged = false;
+        applyButton.SetActive(false);
     }
 
     public void LoadSettings()

@@ -161,7 +161,7 @@ public class RiggedTurret : MonoBehaviour {
         rootSwivel.rotation = Quaternion.Euler(rootSwivel.rotation.x, horRotation.y, rootSwivel.rotation.z);
         elevatorArmSwivel.rotation = Quaternion.Euler(elevRotation.x, elevRotation.y, elevRotation.z);
         turretHeadSwivel.rotation = Quaternion.Euler(turretHeadSwivel.rotation.x, headRotation.y, turretHeadSwivel.rotation.z);
-        //turretHeadSwivel.rotation = Quaternion.Euler(turretHeadSwivel.rotation.x, turretHeadSwivel.rotation.y, turretHeadSwivel.rotation.z);
+        
     }
 
     private void CheckSurroundings()
