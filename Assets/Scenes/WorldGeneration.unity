@@ -154,11 +154,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4240541954622724, guid: aeaeda5219adbc7418daadbfa7553023, type: 2}
       propertyPath: m_LocalScale.x
-      value: 10
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4240541954622724, guid: aeaeda5219adbc7418daadbfa7553023, type: 2}
       propertyPath: m_LocalScale.z
-      value: 10
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 114357438270839898, guid: aeaeda5219adbc7418daadbfa7553023,
         type: 2}
@@ -200,9 +200,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af5562c50687c1c4e9d3c1aa35b8a56b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapWidth: 37
-  mapHeight: 33
-  noiseScale: 0.37
+  mapWidth: 100
+  mapHeight: 100
+  noiseScale: 10.43
+  octaves: 18
+  persistance: 0.5
+  lacunarity: 2
+  seed: 1647
+  offset: {x: 0, y: 0}
   autoUpdate: 1
 --- !u!1 &1951330317
 GameObject:
