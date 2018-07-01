@@ -55,6 +55,7 @@ GameObject:
   - component: {fileID: 4988451683154212}
   - component: {fileID: 114267650947563340}
   - component: {fileID: 114812134124031584}
+  - component: {fileID: 114108008250499638}
   m_Layer: 0
   m_Name: MapGenerator
   m_TagString: Untagged
@@ -83,7 +84,7 @@ Transform:
   m_GameObject: {fileID: 1242211260875708}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 270, y: 1, z: 201}
+  m_LocalScale: {x: 241, y: 1, z: 241}
   m_Children: []
   m_Father: {fileID: 4988451683154212}
   m_RootOrder: 0
@@ -187,6 +188,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1242211260875708}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &114108008250499638
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1251847696328114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7231533372dd174683cd51945ec1e35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  viewer: {fileID: 0}
 --- !u!114 &114267650947563340
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -213,14 +226,56 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drawMode: 2
-  mapWidth: 270
-  mapHeight: 201
-  noiseScale: 50
-  octaves: 19
-  persistance: 0.498
+  levelOfDetail: 0
+  noiseScale: 250
+  octaves: 8
+  persistance: 0.5
   lacunarity: 2
-  seed: 4253
-  offset: {x: 21.4, y: -0.77}
+  seed: 16
+  offset: {x: 89.49, y: 61.6}
+  meshHeightMultiplier: 38.4
+  meshHeightCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.39758763
+      value: 0.0031343997
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.085204996
+    - serializedVersion: 3
+      time: 0.90002155
+      value: 0.7876479
+      inSlope: 3.3298397
+      outSlope: 3.3298397
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.32906055
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   autoUpdate: 1
   regions:
   - name: Water Deep
