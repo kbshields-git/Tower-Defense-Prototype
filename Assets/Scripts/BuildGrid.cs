@@ -25,17 +25,20 @@ public class BuildGrid : MonoBehaviour
 #if UNITY_EDITOR
     private void OnDrawGizmos()
     {
-        if (GameManager.instance.alwaysDrawGizmos && GameManager.instance.drawGridGizmos)
+        if (Application.isPlaying)
         {
-            Gizmos.color = Color.yellow;
-            for (float x = -40; x < 40; x += size)
+            if (GameManager.instance.alwaysDrawGizmos && GameManager.instance.drawGridGizmos)
             {
-                for (float z = -40; z < 40; z += size)
+                Gizmos.color = Color.yellow;
+                for (float x = -40; x < 40; x += size)
                 {
-                    var point = GetNearestPointOnGrid(new Vector3(x, 0f, z));
-                    Gizmos.DrawSphere(point, 0.1f);
-                }
+                    for (float z = -40; z < 40; z += size)
+                    {
+                        var point = GetNearestPointOnGrid(new Vector3(x, 0f, z));
+                        Gizmos.DrawSphere(point, 0.1f);
+                    }
 
+                }
             }
         }
     }
