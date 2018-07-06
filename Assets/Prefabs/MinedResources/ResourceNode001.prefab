@@ -221,6 +221,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeType: 0
   hoverLight: {fileID: 108098830017768810}
+  initialLightIntensity: 10
+  glowSpeed: 2
   startingResources:
     minValue: 5605.3687
     maxValue: 8955.092

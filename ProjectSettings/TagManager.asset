@@ -8,6 +8,8 @@ TagManager:
   - enemyTag
   - enemyParent
   - Barrier
+  - Turret
+  - Resource
   layers:
   - Default
   - TransparentFX
