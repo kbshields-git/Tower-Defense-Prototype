@@ -48,7 +48,7 @@ public class ResourceNode : MonoBehaviour
 
     void OnMouseDown()
     {
-
+        
     }
 
     void OnMouseExit()

@@ -27,7 +27,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1242211260875708
 GameObject:
   m_ObjectHideFlags: 0
@@ -200,6 +200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   viewer: {fileID: 0}
+  mapMaterial: {fileID: 2100000, guid: abd83dbf76a53764bbab92eb35ea8552, type: 2}
 --- !u!114 &114267650947563340
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -226,7 +227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drawMode: 2
-  levelOfDetail: 0
+  editorPreviewLOD: 0
   noiseScale: 250
   octaves: 8
   persistance: 0.5
