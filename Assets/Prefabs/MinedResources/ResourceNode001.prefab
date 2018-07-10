@@ -322,6 +322,7 @@ MonoBehaviour:
   nodeType: 0
   hoverLight: {fileID: 108098830017768810}
   initialLightIntensity: 10
+  hoverLightMultiplier: 3
   glowSpeed: 2
   resourceOverlay: {fileID: 1762012710348406}
   startingResources:
