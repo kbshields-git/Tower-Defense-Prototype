@@ -8,7 +8,7 @@ namespace WorldGen
 {
     public class MapGenerator : MonoBehaviour
     {
-        public enum DrawMode { NoiseMap, ColorMap, Mesh };
+        public enum DrawMode { NoiseMap, ColorMap, Mesh, FalloffMap };
         public DrawMode drawMode;
 
         public Noise.NormalizeMode normalizeMode;
@@ -27,6 +27,8 @@ namespace WorldGen
         public int seed;
         public Vector2 offset;
 
+        public bool useFalloff;
+
         public float meshHeightMultiplier;
         public AnimationCurve meshHeightCurve;
 
@@ -34,9 +36,15 @@ namespace WorldGen
 
         public TerrainType[] regions;
 
+        float[,] falloffMap;
+
         Queue<MapThreadInfo<MapData>> mapDataThreadInfoQueue = new Queue<MapThreadInfo<MapData>>();
         Queue<MapThreadInfo<MeshData>> meshDataThreadInfoQueue = new Queue<MapThreadInfo<MeshData>>();
 
+        void Awake()
+        {
+            falloffMap = FalloffGenerator.GenerateFalloffMap(mapChunkSize);
+        }
         public void DrawMapInEditor()
         {
             MapData mapData = GenerateMapData(Vector2.zero);
@@ -52,6 +60,10 @@ namespace WorldGen
             else if (drawMode == DrawMode.Mesh)
             {
                 display.DrawMesh(MeshGenerator.GenerateTerrainMesh(mapData.heightMap, meshHeightMultiplier, meshHeightCurve, editorPreviewLOD), TextureGenerator.TextureFromColorMap(mapData.colorMap, mapChunkSize, mapChunkSize));
+            }
+            else if (drawMode == DrawMode.FalloffMap)
+            {
+                display.DrawTexture(TextureGenerator.TextureFromHeightMap(FalloffGenerator.GenerateFalloffMap(mapChunkSize)));
             }
         }
 
@@ -123,6 +135,10 @@ namespace WorldGen
             {
                 for (int x = 0; x < mapChunkSize; x++)
                 {
+                    if (useFalloff)
+                    {
+                        noiseMap[x, y] = Mathf.Clamp01(noiseMap[x, y] - falloffMap[x, y]);
+                    }
                     float currentHeight = noiseMap[x, y];
                     for (int i = 0; i < regions.Length; i++)
                     {
@@ -153,6 +169,8 @@ namespace WorldGen
             {
                 octaves = 0;
             }
+
+            falloffMap = FalloffGenerator.GenerateFalloffMap(mapChunkSize);
         }
 
         struct MapThreadInfo<T>
